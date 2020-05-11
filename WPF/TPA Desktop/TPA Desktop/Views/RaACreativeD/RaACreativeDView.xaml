@@ -1,0 +1,26 @@
+﻿<Window x:Class="TPA_Desktop.Views.RaACreativeD.RaACreativeDView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views"
+        mc:Ignorable="d"
+        Title="Ride and Attraction Creative Department" Height="525" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Border Padding="10">
+        <StackPanel>
+            <Frame x:Name="Biodata"></Frame>
+            <TextBlock Margin="10">Idea</TextBlock>
+            <Button x:Name="addIdeaBtn" Margin="5" Click="addIdeaBtn_Click">Add Idea</Button>
+            <Button x:Name="viewIdeaResponseBtn" Margin="5" Click="viewIdeaResponseBtn_Click">View Idea Response</Button>
+            <TextBlock Margin="10">Attraction and Ride</TextBlock>
+            <Button x:Name="viewAttractionRideBtn" Margin="5" Click="viewAttractionRideBtn_Click">View Attraction and Ride</Button>
+            <Button x:Name="viewConstructionProgressBtn" Margin="5" Click="viewConstructionProgressBtn_Click">View Construction Progress</Button>
+            <TextBlock Margin="10">Request</TextBlock>
+            <Button x:Name="addFinanceRequestBtn" Margin="5" Click="addFinanceRequestBtn_Click">Send Finance Request</Button>
+            <Button x:Name="addPurchaseRequestBtn" Margin="5" Click="addPurchaseRequestBtn_Click">Send Purchase Request</Button>
+            <Button x:Name="viewRequestResponseBtn" Margin="5" Click="viewRequestResponseBtn_Click">View Request Response</Button>
+        </StackPanel>
+    </Border>
+</Window>

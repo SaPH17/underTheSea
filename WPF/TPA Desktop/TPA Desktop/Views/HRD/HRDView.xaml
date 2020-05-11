@@ -1,0 +1,31 @@
+﻿<Window x:Class="TPA_Desktop.Views.HRD.HRDView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views"
+        mc:Ignorable="d"
+        Title="Human Resource Department" Height="600" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Border Padding="10">
+        <StackPanel>
+            <Frame x:Name="Biodata"></Frame>
+            
+            <TextBlock Margin="10">Manage Employee</TextBlock>
+            <Button x:Name="addEmployeeBtn" Margin="5" Click="addEmployeeBtn_Click">Add Employee</Button>
+            <Button x:Name="fireEmployeeBtn" Margin="5" Click="fireEmployeeBtn_Click">Fire Employee</Button>
+            <Button x:Name="raiseSalaryBtn" Margin="5" Click="raiseSalaryBtn_Click">Raise Employee Salary</Button>
+            <Button x:Name="paySalaryBtn" Margin="5" Click="paySalaryBtn_Click">Pay Employee Monthly Salary</Button>
+
+            <TextBlock Margin="10">View</TextBlock>
+            <Button x:Name="viewEmployeeBtn" Margin="5" Click="viewEmployeeBtn_Click">View All Employee</Button>
+            <Button x:Name="viewLeavePermitBtn" Margin="5" Click="viewLeavePermitBtn_Click">View Leave Permit Request</Button>
+            <Button x:Name="viewResponseBtn" Margin="5" Click="viewResponseBtn_Click">View Manager's Response</Button>
+
+            <TextBlock Margin="10">Finance</TextBlock>
+            <Button x:Name="sendFinanceBtn" Margin="5" Click="sendFinanceBtn_Click">Send Finance Request</Button>
+            <Button x:Name="viewFinanceBtn" Margin="5" Click="viewFinanceBtn_Click">View Finance Request Response</Button>
+        </StackPanel>
+    </Border>
+</Window>

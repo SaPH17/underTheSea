@@ -1,0 +1,23 @@
+﻿<Window x:Class="TPA_Desktop.Views.SalesMarketingD.SalesMDView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views"
+        mc:Ignorable="d"
+        Title="Sales and Marketing Department" Height="500" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Border Padding="10">
+        <StackPanel>
+            <Frame x:Name="Biodata"></Frame>
+            <TextBlock Margin="10">Advertisement Log</TextBlock>
+            <Button x:Name="addAdvertisementLogBtn" Margin="5" Click="addAdvertisementLogBtn_Click">Add Advertisement Log</Button>
+            <Button x:Name="viewAdvertisementLogBtn" Margin="5" Click="viewAdvertisementLogBtn_Click">View Advertisement Log</Button>
+            <TextBlock Margin="10">Purchase</TextBlock>
+            <Button x:Name="addPurchaseRequestBtn" Margin="5" Click="addPurchaseRequestBtn_Click">Add Purchase Request</Button>
+            <Button x:Name="addFundRequestBtn" Margin="5" Click="addFundRequestBtn_Click">Add Fund Request</Button>
+            <Button x:Name="viewRequestResponseBtn" Margin="5" Click="viewRequestResponseBtn_Click">View Request Response</Button>
+        </StackPanel>
+    </Border>
+</Window>

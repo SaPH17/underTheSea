@@ -1,0 +1,1975 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UnderTheSeaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="advertisementID" />
+          </Key>
+          <Property Name="advertisementID" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="AttractionOrRide">
+          <Key>
+            <PropertyRef Name="attractionID" />
+          </Key>
+          <Property Name="attractionID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="CleaningLog">
+          <Key>
+            <PropertyRef Name="cleaningLogID" />
+          </Key>
+          <Property Name="cleaningLogID" Type="int" Nullable="false" />
+          <Property Name="roomID" Type="int" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="cleaningDate" Type="date" />
+        </EntityType>
+        <EntityType Name="CleaningSchedule">
+          <Key>
+            <PropertyRef Name="scheduleID" />
+          </Key>
+          <Property Name="scheduleID" Type="int" Nullable="false" />
+          <Property Name="roomID" Type="int" />
+          <Property Name="time" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ConstructionProgress">
+          <Key>
+            <PropertyRef Name="progressID" />
+          </Key>
+          <Property Name="progressID" Type="int" Nullable="false" />
+          <Property Name="attractionID" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="progressDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="int" Nullable="false" />
+          <Property Name="idCardNumber" Type="varchar" MaxLength="255" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="dateOfBirth" Type="date" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="gender" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="departmentID" />
+          </Key>
+          <Property Name="departmentID" Type="int" Nullable="false" />
+          <Property Name="departmentName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="DetailHotelTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+            <PropertyRef Name="roomID" />
+          </Key>
+          <Property Name="transactionID" Type="int" Nullable="false" />
+          <Property Name="roomID" Type="int" Nullable="false" />
+          <Property Name="duration" Type="int" />
+        </EntityType>
+        <EntityType Name="DetailRestaurantTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+            <PropertyRef Name="foodID" />
+          </Key>
+          <Property Name="transactionID" Type="int" Nullable="false" />
+          <Property Name="foodID" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="DetailTicketTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+            <PropertyRef Name="ticketID" />
+          </Key>
+          <Property Name="transactionID" Type="int" Nullable="false" />
+          <Property Name="ticketID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="int" Nullable="false" />
+          <Property Name="departmentID" Type="int" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
+          <Property Name="salary" Type="int" />
+          <Property Name="dateOfBirth" Type="date" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="feedbackID" />
+          </Key>
+          <Property Name="feedbackID" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" />
+          <Property Name="receiver" Type="varchar" MaxLength="255" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="foodID" />
+          </Key>
+          <Property Name="foodID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="HotelTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+          </Key>
+          <Property Name="transactionID" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="purchaseDate" Type="date" />
+        </EntityType>
+        <EntityType Name="HRRequest">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="int" Nullable="false" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="response" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Idea">
+          <Key>
+            <PropertyRef Name="ideaID" />
+          </Key>
+          <Property Name="ideaID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="response" Type="varchar" MaxLength="255" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="category" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="ingredientID" />
+          </Key>
+          <Property Name="ingredientID" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="MaintenanceLog">
+          <Key>
+            <PropertyRef Name="maintenanceLogID" />
+          </Key>
+          <Property Name="maintenanceLogID" Type="int" Nullable="false" />
+          <Property Name="scheduleID" Type="int" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MaintenanceSchedule">
+          <Key>
+            <PropertyRef Name="scheduleID" />
+          </Key>
+          <Property Name="scheduleID" Type="int" Nullable="false" />
+          <Property Name="attractionID" Type="int" />
+          <Property Name="scheduleDate" Type="date" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="seatID" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="orderID" />
+            <PropertyRef Name="foodID" />
+          </Key>
+          <Property Name="orderID" Type="int" Nullable="false" />
+          <Property Name="foodID" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="PersonalRequest">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="int" Nullable="false" />
+          <Property Name="departmentID" Type="int" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="response" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PurchaseLog">
+          <Key>
+            <PropertyRef Name="purchaseLogID" />
+          </Key>
+          <Property Name="purchaseLogID" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="purchaseDate" Type="date" />
+          <Property Name="totalPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="int" Nullable="false" />
+          <Property Name="departmentID" Type="int" />
+          <Property Name="type" Type="varchar" MaxLength="255" />
+          <Property Name="title" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="response" Type="varchar" MaxLength="255" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="reservationID" />
+          </Key>
+          <Property Name="reservationID" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" />
+          <Property Name="roomID" Type="int" />
+          <Property Name="checkInDate" Type="date" />
+          <Property Name="checkOutDate" Type="date" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="RestaurantTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+          </Key>
+          <Property Name="transactionID" Type="int" Nullable="false" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="seatID" Type="int" />
+          <Property Name="purchaseDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="roomID" />
+          </Key>
+          <Property Name="roomID" Type="int" Nullable="false" />
+          <Property Name="price" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="seatID" />
+          </Key>
+          <Property Name="seatID" Type="int" Nullable="false" />
+          <Property Name="chairQuantity" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="taskID" />
+          </Key>
+          <Property Name="taskID" Type="int" Nullable="false" />
+          <Property Name="ideaID" Type="int" />
+          <Property Name="status" Type="varchar" MaxLength="255" />
+          <Property Name="taskDescription" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ticketID" />
+          </Key>
+          <Property Name="ticketID" Type="int" Nullable="false" />
+          <Property Name="dateCreated" Type="date" />
+        </EntityType>
+        <EntityType Name="TicketTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+          </Key>
+          <Property Name="transactionID" Type="int" Nullable="false" />
+          <Property Name="employeeID" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="purchaseDate" Type="date" />
+        </EntityType>
+        <Association Name="FK__CleaningL__roomI__47A6A41B">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="CleaningLog" Type="Self.CleaningLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="CleaningLog">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CleaningS__roomI__571DF1D5">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="CleaningSchedule" Type="Self.CleaningSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="CleaningSchedule">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Construct__attra__4A8310C6">
+          <End Role="AttractionOrRide" Type="Self.AttractionOrRide" Multiplicity="0..1" />
+          <End Role="ConstructionProgress" Type="Self.ConstructionProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttractionOrRide">
+              <PropertyRef Name="attractionID" />
+            </Principal>
+            <Dependent Role="ConstructionProgress">
+              <PropertyRef Name="attractionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailHot__roomI__123EB7A3">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="DetailHotelTransaction" Type="Self.DetailHotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="DetailHotelTransaction">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailHot__trans__114A936A">
+          <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="1" />
+          <End Role="DetailHotelTransaction" Type="Self.DetailHotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelTransaction">
+              <PropertyRef Name="transactionID" />
+            </Principal>
+            <Dependent Role="DetailHotelTransaction">
+              <PropertyRef Name="transactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailRes__foodI__208CD6FA">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="DetailRestaurantTransaction" Type="Self.DetailRestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="foodID" />
+            </Principal>
+            <Dependent Role="DetailRestaurantTransaction">
+              <PropertyRef Name="foodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailRes__trans__1F98B2C1">
+          <End Role="RestaurantTransaction" Type="Self.RestaurantTransaction" Multiplicity="1" />
+          <End Role="DetailRestaurantTransaction" Type="Self.DetailRestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantTransaction">
+              <PropertyRef Name="transactionID" />
+            </Principal>
+            <Dependent Role="DetailRestaurantTransaction">
+              <PropertyRef Name="transactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailTic__ticke__18EBB532">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
+          <End Role="DetailTicketTransaction" Type="Self.DetailTicketTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ticketID" />
+            </Principal>
+            <Dependent Role="DetailTicketTransaction">
+              <PropertyRef Name="ticketID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailTic__trans__17F790F9">
+          <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="1" />
+          <End Role="DetailTicketTransaction" Type="Self.DetailTicketTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TicketTransaction">
+              <PropertyRef Name="transactionID" />
+            </Principal>
+            <Dependent Role="DetailTicketTransaction">
+              <PropertyRef Name="transactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__depart__06CD04F7">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="departmentID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="departmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__custom__4AB81AF0">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotelTran__custo__0D7A0286">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="HotelTransaction">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotelTran__emplo__0E6E26BF">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="HotelTransaction">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HRRequest__emplo__37703C52">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="HRRequest" Type="Self.HRRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="HRRequest">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__attra__4222D4EF">
+          <End Role="AttractionOrRide" Type="Self.AttractionOrRide" Multiplicity="0..1" />
+          <End Role="MaintenanceSchedule" Type="Self.MaintenanceSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttractionOrRide">
+              <PropertyRef Name="attractionID" />
+            </Principal>
+            <Dependent Role="MaintenanceSchedule">
+              <PropertyRef Name="attractionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__emplo__0A9D95DB">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="MaintenanceLog" Type="Self.MaintenanceLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="MaintenanceLog">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__sched__09A971A2">
+          <End Role="MaintenanceSchedule" Type="Self.MaintenanceSchedule" Multiplicity="0..1" />
+          <End Role="MaintenanceLog" Type="Self.MaintenanceLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenanceSchedule">
+              <PropertyRef Name="scheduleID" />
+            </Principal>
+            <Dependent Role="MaintenanceLog">
+              <PropertyRef Name="scheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__seatID__76969D2E">
+          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="seatID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="seatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__foodI__7A672E12">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="foodID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="foodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__order__797309D9">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonalR__depar__3A4CA8FD">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="PersonalRequest" Type="Self.PersonalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="departmentID" />
+            </Principal>
+            <Dependent Role="PersonalRequest">
+              <PropertyRef Name="departmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonalR__emplo__3B40CD36">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="PersonalRequest" Type="Self.PersonalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="PersonalRequest">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__departm__3493CFA7">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="departmentID" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="departmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__custo__59FA5E80">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__roomI__5AEE82B9">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__emplo__1BC821DD">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="RestaurantTransaction" Type="Self.RestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="RestaurantTransaction">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__seatI__1CBC4616">
+          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="RestaurantTransaction" Type="Self.RestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="seatID" />
+            </Principal>
+            <Dependent Role="RestaurantTransaction">
+              <PropertyRef Name="seatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__ideaID__5BAD9CC8">
+          <End Role="Idea" Type="Self.Idea" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Idea">
+              <PropertyRef Name="ideaID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="ideaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TicketTra__emplo__151B244E">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="TicketTransaction">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UnderTheSeaModelStoreContainer">
+          <EntitySet Name="Advertisement" EntityType="Self.Advertisement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AttractionOrRide" EntityType="Self.AttractionOrRide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CleaningLog" EntityType="Self.CleaningLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CleaningSchedule" EntityType="Self.CleaningSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConstructionProgress" EntityType="Self.ConstructionProgress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailHotelTransaction" EntityType="Self.DetailHotelTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailRestaurantTransaction" EntityType="Self.DetailRestaurantTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetailTicketTransaction" EntityType="Self.DetailTicketTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HotelTransaction" EntityType="Self.HotelTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HRRequest" EntityType="Self.HRRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Idea" EntityType="Self.Idea" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaintenanceLog" EntityType="Self.MaintenanceLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaintenanceSchedule" EntityType="Self.MaintenanceSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonalRequest" EntityType="Self.PersonalRequest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PurchaseLog" EntityType="Self.PurchaseLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RestaurantTransaction" EntityType="Self.RestaurantTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Seat" EntityType="Self.Seat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketTransaction" EntityType="Self.TicketTransaction" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CleaningL__roomI__47A6A41B" Association="Self.FK__CleaningL__roomI__47A6A41B">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="CleaningLog" EntitySet="CleaningLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CleaningS__roomI__571DF1D5" Association="Self.FK__CleaningS__roomI__571DF1D5">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="CleaningSchedule" EntitySet="CleaningSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Construct__attra__4A8310C6" Association="Self.FK__Construct__attra__4A8310C6">
+            <End Role="AttractionOrRide" EntitySet="AttractionOrRide" />
+            <End Role="ConstructionProgress" EntitySet="ConstructionProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailHot__roomI__123EB7A3" Association="Self.FK__DetailHot__roomI__123EB7A3">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="DetailHotelTransaction" EntitySet="DetailHotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailHot__trans__114A936A" Association="Self.FK__DetailHot__trans__114A936A">
+            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
+            <End Role="DetailHotelTransaction" EntitySet="DetailHotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailRes__foodI__208CD6FA" Association="Self.FK__DetailRes__foodI__208CD6FA">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="DetailRestaurantTransaction" EntitySet="DetailRestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailRes__trans__1F98B2C1" Association="Self.FK__DetailRes__trans__1F98B2C1">
+            <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
+            <End Role="DetailRestaurantTransaction" EntitySet="DetailRestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailTic__ticke__18EBB532" Association="Self.FK__DetailTic__ticke__18EBB532">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="DetailTicketTransaction" EntitySet="DetailTicketTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailTic__trans__17F790F9" Association="Self.FK__DetailTic__trans__17F790F9">
+            <End Role="TicketTransaction" EntitySet="TicketTransaction" />
+            <End Role="DetailTicketTransaction" EntitySet="DetailTicketTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__depart__06CD04F7" Association="Self.FK__Employee__depart__06CD04F7">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__custom__4AB81AF0" Association="Self.FK__Feedback__custom__4AB81AF0">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotelTran__custo__0D7A0286" Association="Self.FK__HotelTran__custo__0D7A0286">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotelTran__emplo__0E6E26BF" Association="Self.FK__HotelTran__emplo__0E6E26BF">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HRRequest__emplo__37703C52" Association="Self.FK__HRRequest__emplo__37703C52">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="HRRequest" EntitySet="HRRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__attra__4222D4EF" Association="Self.FK__Maintenan__attra__4222D4EF">
+            <End Role="AttractionOrRide" EntitySet="AttractionOrRide" />
+            <End Role="MaintenanceSchedule" EntitySet="MaintenanceSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__emplo__0A9D95DB" Association="Self.FK__Maintenan__emplo__0A9D95DB">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="MaintenanceLog" EntitySet="MaintenanceLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__sched__09A971A2" Association="Self.FK__Maintenan__sched__09A971A2">
+            <End Role="MaintenanceSchedule" EntitySet="MaintenanceSchedule" />
+            <End Role="MaintenanceLog" EntitySet="MaintenanceLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__seatID__76969D2E" Association="Self.FK__Order__seatID__76969D2E">
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__foodI__7A672E12" Association="Self.FK__OrderDeta__foodI__7A672E12">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__order__797309D9" Association="Self.FK__OrderDeta__order__797309D9">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonalR__depar__3A4CA8FD" Association="Self.FK__PersonalR__depar__3A4CA8FD">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="PersonalRequest" EntitySet="PersonalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonalR__emplo__3B40CD36" Association="Self.FK__PersonalR__emplo__3B40CD36">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PersonalRequest" EntitySet="PersonalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__departm__3493CFA7" Association="Self.FK__Request__departm__3493CFA7">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__custo__59FA5E80" Association="Self.FK__Reservati__custo__59FA5E80">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__roomI__5AEE82B9" Association="Self.FK__Reservati__roomI__5AEE82B9">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__emplo__1BC821DD" Association="Self.FK__Restauran__emplo__1BC821DD">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__seatI__1CBC4616" Association="Self.FK__Restauran__seatI__1CBC4616">
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ideaID__5BAD9CC8" Association="Self.FK__Task__ideaID__5BAD9CC8">
+            <End Role="Idea" EntitySet="Idea" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TicketTra__emplo__151B244E" Association="Self.FK__TicketTra__emplo__151B244E">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TicketTransaction" EntitySet="TicketTransaction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UnderTheSeaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Advertisement">
+          <Key>
+            <PropertyRef Name="advertisementID" />
+          </Key>
+          <Property Name="advertisementID" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AttractionOrRide">
+          <Key>
+            <PropertyRef Name="attractionID" />
+          </Key>
+          <Property Name="attractionID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ConstructionProgress" Relationship="Self.FK__Construct__attra__4A8310C6" FromRole="AttractionOrRide" ToRole="ConstructionProgress" />
+          <NavigationProperty Name="MaintenanceSchedule" Relationship="Self.FK__Maintenan__attra__4222D4EF" FromRole="AttractionOrRide" ToRole="MaintenanceSchedule" />
+        </EntityType>
+        <EntityType Name="CleaningLog">
+          <Key>
+            <PropertyRef Name="cleaningLogID" />
+          </Key>
+          <Property Name="cleaningLogID" Type="Int32" Nullable="false" />
+          <Property Name="roomID" Type="Int32" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cleaningDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__CleaningL__roomI__47A6A41B" FromRole="CleaningLog" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="CleaningSchedule">
+          <Key>
+            <PropertyRef Name="scheduleID" />
+          </Key>
+          <Property Name="scheduleID" Type="Int32" Nullable="false" />
+          <Property Name="roomID" Type="Int32" />
+          <Property Name="time" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__CleaningS__roomI__571DF1D5" FromRole="CleaningSchedule" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="ConstructionProgress">
+          <Key>
+            <PropertyRef Name="progressID" />
+          </Key>
+          <Property Name="progressID" Type="Int32" Nullable="false" />
+          <Property Name="attractionID" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="progressDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="AttractionOrRide" Relationship="Self.FK__Construct__attra__4A8310C6" FromRole="ConstructionProgress" ToRole="AttractionOrRide" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="Int32" Nullable="false" />
+          <Property Name="idCardNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Feedback" Relationship="Self.FK__Feedback__custom__4AB81AF0" FromRole="Customer" ToRole="Feedback" />
+          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__HotelTran__custo__0D7A0286" FromRole="Customer" ToRole="HotelTransaction" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK__Reservati__custo__59FA5E80" FromRole="Customer" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="departmentID" />
+          </Key>
+          <Property Name="departmentID" Type="Int32" Nullable="false" />
+          <Property Name="departmentName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee__depart__06CD04F7" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="PersonalRequest" Relationship="Self.FK__PersonalR__depar__3A4CA8FD" FromRole="Department" ToRole="PersonalRequest" />
+          <NavigationProperty Name="Request" Relationship="Self.FK__Request__departm__3493CFA7" FromRole="Department" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="DetailHotelTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+            <PropertyRef Name="roomID" />
+          </Key>
+          <Property Name="transactionID" Type="Int32" Nullable="false" />
+          <Property Name="roomID" Type="Int32" Nullable="false" />
+          <Property Name="duration" Type="Int32" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__DetailHot__roomI__123EB7A3" FromRole="DetailHotelTransaction" ToRole="Room" />
+          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__DetailHot__trans__114A936A" FromRole="DetailHotelTransaction" ToRole="HotelTransaction" />
+        </EntityType>
+        <EntityType Name="DetailRestaurantTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+            <PropertyRef Name="foodID" />
+          </Key>
+          <Property Name="transactionID" Type="Int32" Nullable="false" />
+          <Property Name="foodID" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="Food" Relationship="Self.FK__DetailRes__foodI__208CD6FA" FromRole="DetailRestaurantTransaction" ToRole="Food" />
+          <NavigationProperty Name="RestaurantTransaction" Relationship="Self.FK__DetailRes__trans__1F98B2C1" FromRole="DetailRestaurantTransaction" ToRole="RestaurantTransaction" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employeeID" />
+          </Key>
+          <Property Name="employeeID" Type="Int32" Nullable="false" />
+          <Property Name="departmentID" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="salary" Type="Int32" />
+          <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__depart__06CD04F7" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__HotelTran__emplo__0E6E26BF" FromRole="Employee" ToRole="HotelTransaction" />
+          <NavigationProperty Name="HRRequest" Relationship="Self.FK__HRRequest__emplo__37703C52" FromRole="Employee" ToRole="HRRequest" />
+          <NavigationProperty Name="MaintenanceLog" Relationship="Self.FK__Maintenan__emplo__0A9D95DB" FromRole="Employee" ToRole="MaintenanceLog" />
+          <NavigationProperty Name="PersonalRequest" Relationship="Self.FK__PersonalR__emplo__3B40CD36" FromRole="Employee" ToRole="PersonalRequest" />
+          <NavigationProperty Name="RestaurantTransaction" Relationship="Self.FK__Restauran__emplo__1BC821DD" FromRole="Employee" ToRole="RestaurantTransaction" />
+          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__emplo__151B244E" FromRole="Employee" ToRole="TicketTransaction" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="feedbackID" />
+          </Key>
+          <Property Name="feedbackID" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="Int32" />
+          <Property Name="receiver" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Feedback__custom__4AB81AF0" FromRole="Feedback" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Food">
+          <Key>
+            <PropertyRef Name="foodID" />
+          </Key>
+          <Property Name="foodID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="DetailRestaurantTransaction" Relationship="Self.FK__DetailRes__foodI__208CD6FA" FromRole="Food" ToRole="DetailRestaurantTransaction" />
+          <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__foodI__7A672E12" FromRole="Food" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="HotelTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+          </Key>
+          <Property Name="transactionID" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="Int32" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="purchaseDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__HotelTran__custo__0D7A0286" FromRole="HotelTransaction" ToRole="Customer" />
+          <NavigationProperty Name="DetailHotelTransaction" Relationship="Self.FK__DetailHot__trans__114A936A" FromRole="HotelTransaction" ToRole="DetailHotelTransaction" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__HotelTran__emplo__0E6E26BF" FromRole="HotelTransaction" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="HRRequest">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="Int32" Nullable="false" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="response" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__HRRequest__emplo__37703C52" FromRole="HRRequest" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Idea">
+          <Key>
+            <PropertyRef Name="ideaID" />
+          </Key>
+          <Property Name="ideaID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="response" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Task" Relationship="Self.FK__Task__ideaID__58D1301D" FromRole="Idea" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="ingredientID" />
+          </Key>
+          <Property Name="ingredientID" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MaintenanceLog">
+          <Key>
+            <PropertyRef Name="maintenanceLogID" />
+          </Key>
+          <Property Name="maintenanceLogID" Type="Int32" Nullable="false" />
+          <Property Name="scheduleID" Type="Int32" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Maintenan__emplo__0A9D95DB" FromRole="MaintenanceLog" ToRole="Employee" />
+          <NavigationProperty Name="MaintenanceSchedule" Relationship="Self.FK__Maintenan__sched__09A971A2" FromRole="MaintenanceLog" ToRole="MaintenanceSchedule" />
+        </EntityType>
+        <EntityType Name="MaintenanceSchedule">
+          <Key>
+            <PropertyRef Name="scheduleID" />
+          </Key>
+          <Property Name="scheduleID" Type="Int32" Nullable="false" />
+          <Property Name="attractionID" Type="Int32" />
+          <Property Name="scheduleDate" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AttractionOrRide" Relationship="Self.FK__Maintenan__attra__4222D4EF" FromRole="MaintenanceSchedule" ToRole="AttractionOrRide" />
+          <NavigationProperty Name="MaintenanceLog" Relationship="Self.FK__Maintenan__sched__09A971A2" FromRole="MaintenanceSchedule" ToRole="MaintenanceLog" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="orderID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="seatID" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Seat" Relationship="Self.FK__Order__seatID__76969D2E" FromRole="Order" ToRole="Seat" />
+          <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__order__797309D9" FromRole="Order" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="orderID" />
+            <PropertyRef Name="foodID" />
+          </Key>
+          <Property Name="orderID" Type="Int32" Nullable="false" />
+          <Property Name="foodID" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" />
+          <NavigationProperty Name="Food" Relationship="Self.FK__OrderDeta__foodI__7A672E12" FromRole="OrderDetail" ToRole="Food" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__OrderDeta__order__797309D9" FromRole="OrderDetail" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="PersonalRequest">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="Int32" Nullable="false" />
+          <Property Name="departmentID" Type="Int32" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="response" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__PersonalR__depar__3A4CA8FD" FromRole="PersonalRequest" ToRole="Department" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__PersonalR__emplo__3B40CD36" FromRole="PersonalRequest" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="PurchaseLog">
+          <Key>
+            <PropertyRef Name="purchaseLogID" />
+          </Key>
+          <Property Name="purchaseLogID" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="purchaseDate" Type="DateTime" Precision="0" />
+          <Property Name="totalPrice" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="requestID" />
+          </Key>
+          <Property Name="requestID" Type="Int32" Nullable="false" />
+          <Property Name="departmentID" Type="Int32" />
+          <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="response" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Request__departm__3493CFA7" FromRole="Request" ToRole="Department" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="reservationID" />
+          </Key>
+          <Property Name="reservationID" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="Int32" />
+          <Property Name="roomID" Type="Int32" />
+          <Property Name="checkInDate" Type="DateTime" Precision="0" />
+          <Property Name="checkOutDate" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Reservati__custo__59FA5E80" FromRole="Reservation" ToRole="Customer" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Reservati__roomI__5AEE82B9" FromRole="Reservation" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="RestaurantTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+          </Key>
+          <Property Name="transactionID" Type="Int32" Nullable="false" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="seatID" Type="Int32" />
+          <Property Name="purchaseDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="DetailRestaurantTransaction" Relationship="Self.FK__DetailRes__trans__1F98B2C1" FromRole="RestaurantTransaction" ToRole="DetailRestaurantTransaction" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Restauran__emplo__1BC821DD" FromRole="RestaurantTransaction" ToRole="Employee" />
+          <NavigationProperty Name="Seat" Relationship="Self.FK__Restauran__seatI__1CBC4616" FromRole="RestaurantTransaction" ToRole="Seat" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="roomID" />
+          </Key>
+          <Property Name="roomID" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CleaningLog" Relationship="Self.FK__CleaningL__roomI__47A6A41B" FromRole="Room" ToRole="CleaningLog" />
+          <NavigationProperty Name="CleaningSchedule" Relationship="Self.FK__CleaningS__roomI__571DF1D5" FromRole="Room" ToRole="CleaningSchedule" />
+          <NavigationProperty Name="DetailHotelTransaction" Relationship="Self.FK__DetailHot__roomI__123EB7A3" FromRole="Room" ToRole="DetailHotelTransaction" />
+          <NavigationProperty Name="Reservation" Relationship="Self.FK__Reservati__roomI__5AEE82B9" FromRole="Room" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Seat">
+          <Key>
+            <PropertyRef Name="seatID" />
+          </Key>
+          <Property Name="seatID" Type="Int32" Nullable="false" />
+          <Property Name="chairQuantity" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__Order__seatID__76969D2E" FromRole="Seat" ToRole="Order" />
+          <NavigationProperty Name="RestaurantTransaction" Relationship="Self.FK__Restauran__seatI__1CBC4616" FromRole="Seat" ToRole="RestaurantTransaction" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="taskID" />
+          </Key>
+          <Property Name="taskID" Type="Int32" Nullable="false" />
+          <Property Name="ideaID" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK__Task__ideaID__58D1301D" FromRole="Task" ToRole="Idea" />
+          <Property Name="taskDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Ticket">
+          <Key>
+            <PropertyRef Name="ticketID" />
+          </Key>
+          <Property Name="ticketID" Type="Int32" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TicketTransaction" Relationship="Self.DetailTicketTransaction" FromRole="Ticket" ToRole="TicketTransaction" />
+        </EntityType>
+        <EntityType Name="TicketTransaction">
+          <Key>
+            <PropertyRef Name="transactionID" />
+          </Key>
+          <Property Name="transactionID" Type="Int32" Nullable="false" />
+          <Property Name="employeeID" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="purchaseDate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__TicketTra__emplo__151B244E" FromRole="TicketTransaction" ToRole="Employee" />
+          <NavigationProperty Name="Ticket" Relationship="Self.DetailTicketTransaction" FromRole="TicketTransaction" ToRole="Ticket" />
+        </EntityType>
+        <Association Name="FK__Construct__attra__4A8310C6">
+          <End Role="AttractionOrRide" Type="Self.AttractionOrRide" Multiplicity="0..1" />
+          <End Role="ConstructionProgress" Type="Self.ConstructionProgress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttractionOrRide">
+              <PropertyRef Name="attractionID" />
+            </Principal>
+            <Dependent Role="ConstructionProgress">
+              <PropertyRef Name="attractionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__attra__4222D4EF">
+          <End Role="AttractionOrRide" Type="Self.AttractionOrRide" Multiplicity="0..1" />
+          <End Role="MaintenanceSchedule" Type="Self.MaintenanceSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AttractionOrRide">
+              <PropertyRef Name="attractionID" />
+            </Principal>
+            <Dependent Role="MaintenanceSchedule">
+              <PropertyRef Name="attractionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CleaningL__roomI__47A6A41B">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="CleaningLog" Type="Self.CleaningLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="CleaningLog">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CleaningS__roomI__571DF1D5">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="CleaningSchedule" Type="Self.CleaningSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="CleaningSchedule">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Feedback__custom__4AB81AF0">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotelTran__custo__0D7A0286">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="HotelTransaction">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__custo__59FA5E80">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__depart__06CD04F7">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="departmentID" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="departmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonalR__depar__3A4CA8FD">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="PersonalRequest" Type="Self.PersonalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="departmentID" />
+            </Principal>
+            <Dependent Role="PersonalRequest">
+              <PropertyRef Name="departmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__departm__3493CFA7">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="departmentID" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="departmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailHot__roomI__123EB7A3">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="DetailHotelTransaction" Type="Self.DetailHotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="DetailHotelTransaction">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailHot__trans__114A936A">
+          <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="1" />
+          <End Role="DetailHotelTransaction" Type="Self.DetailHotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelTransaction">
+              <PropertyRef Name="transactionID" />
+            </Principal>
+            <Dependent Role="DetailHotelTransaction">
+              <PropertyRef Name="transactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailRes__foodI__208CD6FA">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="DetailRestaurantTransaction" Type="Self.DetailRestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="foodID" />
+            </Principal>
+            <Dependent Role="DetailRestaurantTransaction">
+              <PropertyRef Name="foodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetailRes__trans__1F98B2C1">
+          <End Role="RestaurantTransaction" Type="Self.RestaurantTransaction" Multiplicity="1" />
+          <End Role="DetailRestaurantTransaction" Type="Self.DetailRestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RestaurantTransaction">
+              <PropertyRef Name="transactionID" />
+            </Principal>
+            <Dependent Role="DetailRestaurantTransaction">
+              <PropertyRef Name="transactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HotelTran__emplo__0E6E26BF">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="HotelTransaction">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HRRequest__emplo__37703C52">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="HRRequest" Type="Self.HRRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="HRRequest">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__emplo__0A9D95DB">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="MaintenanceLog" Type="Self.MaintenanceLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="MaintenanceLog">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PersonalR__emplo__3B40CD36">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="PersonalRequest" Type="Self.PersonalRequest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="PersonalRequest">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__emplo__1BC821DD">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="RestaurantTransaction" Type="Self.RestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="RestaurantTransaction">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TicketTra__emplo__151B244E">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="employeeID" />
+            </Principal>
+            <Dependent Role="TicketTransaction">
+              <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__foodI__7A672E12">
+          <End Role="Food" Type="Self.Food" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food">
+              <PropertyRef Name="foodID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="foodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__ideaID__58D1301D">
+          <End Role="Idea" Type="Self.Idea" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Idea">
+              <PropertyRef Name="ideaID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="ideaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Maintenan__sched__09A971A2">
+          <End Role="MaintenanceSchedule" Type="Self.MaintenanceSchedule" Multiplicity="0..1" />
+          <End Role="MaintenanceLog" Type="Self.MaintenanceLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MaintenanceSchedule">
+              <PropertyRef Name="scheduleID" />
+            </Principal>
+            <Dependent Role="MaintenanceLog">
+              <PropertyRef Name="scheduleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order__seatID__76969D2E">
+          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="seatID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="seatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__order__797309D9">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="orderID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="orderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__roomI__5AEE82B9">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restauran__seatI__1CBC4616">
+          <End Role="Seat" Type="Self.Seat" Multiplicity="0..1" />
+          <End Role="RestaurantTransaction" Type="Self.RestaurantTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Seat">
+              <PropertyRef Name="seatID" />
+            </Principal>
+            <Dependent Role="RestaurantTransaction">
+              <PropertyRef Name="seatID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DetailTicketTransaction">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+          <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="UnderTheSeaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertisement" EntityType="Self.Advertisement" />
+          <EntitySet Name="AttractionOrRide" EntityType="Self.AttractionOrRide" />
+          <EntitySet Name="CleaningLog" EntityType="Self.CleaningLog" />
+          <EntitySet Name="CleaningSchedule" EntityType="Self.CleaningSchedule" />
+          <EntitySet Name="ConstructionProgress" EntityType="Self.ConstructionProgress" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="DetailHotelTransaction" EntityType="Self.DetailHotelTransaction" />
+          <EntitySet Name="DetailRestaurantTransaction" EntityType="Self.DetailRestaurantTransaction" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" />
+          <EntitySet Name="Food" EntityType="Self.Food" />
+          <EntitySet Name="HotelTransaction" EntityType="Self.HotelTransaction" />
+          <EntitySet Name="HRRequest" EntityType="Self.HRRequest" />
+          <EntitySet Name="Idea" EntityType="Self.Idea" />
+          <EntitySet Name="Ingredient" EntityType="Self.Ingredient" />
+          <EntitySet Name="MaintenanceLog" EntityType="Self.MaintenanceLog" />
+          <EntitySet Name="MaintenanceSchedule" EntityType="Self.MaintenanceSchedule" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+          <EntitySet Name="PersonalRequest" EntityType="Self.PersonalRequest" />
+          <EntitySet Name="PurchaseLog" EntityType="Self.PurchaseLog" />
+          <EntitySet Name="Request" EntityType="Self.Request" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" />
+          <EntitySet Name="RestaurantTransaction" EntityType="Self.RestaurantTransaction" />
+          <EntitySet Name="Room" EntityType="Self.Room" />
+          <EntitySet Name="Seat" EntityType="Self.Seat" />
+          <EntitySet Name="Task" EntityType="Self.Task" />
+          <EntitySet Name="Ticket" EntityType="Self.Ticket" />
+          <EntitySet Name="TicketTransaction" EntityType="Self.TicketTransaction" />
+          <AssociationSet Name="FK__Construct__attra__4A8310C6" Association="Self.FK__Construct__attra__4A8310C6">
+            <End Role="AttractionOrRide" EntitySet="AttractionOrRide" />
+            <End Role="ConstructionProgress" EntitySet="ConstructionProgress" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__attra__4222D4EF" Association="Self.FK__Maintenan__attra__4222D4EF">
+            <End Role="AttractionOrRide" EntitySet="AttractionOrRide" />
+            <End Role="MaintenanceSchedule" EntitySet="MaintenanceSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CleaningL__roomI__47A6A41B" Association="Self.FK__CleaningL__roomI__47A6A41B">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="CleaningLog" EntitySet="CleaningLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CleaningS__roomI__571DF1D5" Association="Self.FK__CleaningS__roomI__571DF1D5">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="CleaningSchedule" EntitySet="CleaningSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Feedback__custom__4AB81AF0" Association="Self.FK__Feedback__custom__4AB81AF0">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotelTran__custo__0D7A0286" Association="Self.FK__HotelTran__custo__0D7A0286">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__custo__59FA5E80" Association="Self.FK__Reservati__custo__59FA5E80">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__depart__06CD04F7" Association="Self.FK__Employee__depart__06CD04F7">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonalR__depar__3A4CA8FD" Association="Self.FK__PersonalR__depar__3A4CA8FD">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="PersonalRequest" EntitySet="PersonalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__departm__3493CFA7" Association="Self.FK__Request__departm__3493CFA7">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailHot__roomI__123EB7A3" Association="Self.FK__DetailHot__roomI__123EB7A3">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="DetailHotelTransaction" EntitySet="DetailHotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailHot__trans__114A936A" Association="Self.FK__DetailHot__trans__114A936A">
+            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
+            <End Role="DetailHotelTransaction" EntitySet="DetailHotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailRes__foodI__208CD6FA" Association="Self.FK__DetailRes__foodI__208CD6FA">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="DetailRestaurantTransaction" EntitySet="DetailRestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetailRes__trans__1F98B2C1" Association="Self.FK__DetailRes__trans__1F98B2C1">
+            <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
+            <End Role="DetailRestaurantTransaction" EntitySet="DetailRestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HotelTran__emplo__0E6E26BF" Association="Self.FK__HotelTran__emplo__0E6E26BF">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HRRequest__emplo__37703C52" Association="Self.FK__HRRequest__emplo__37703C52">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="HRRequest" EntitySet="HRRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__emplo__0A9D95DB" Association="Self.FK__Maintenan__emplo__0A9D95DB">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="MaintenanceLog" EntitySet="MaintenanceLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PersonalR__emplo__3B40CD36" Association="Self.FK__PersonalR__emplo__3B40CD36">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="PersonalRequest" EntitySet="PersonalRequest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__emplo__1BC821DD" Association="Self.FK__Restauran__emplo__1BC821DD">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TicketTra__emplo__151B244E" Association="Self.FK__TicketTra__emplo__151B244E">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="TicketTransaction" EntitySet="TicketTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__foodI__7A672E12" Association="Self.FK__OrderDeta__foodI__7A672E12">
+            <End Role="Food" EntitySet="Food" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ideaID__58D1301D" Association="Self.FK__Task__ideaID__58D1301D">
+            <End Role="Idea" EntitySet="Idea" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Maintenan__sched__09A971A2" Association="Self.FK__Maintenan__sched__09A971A2">
+            <End Role="MaintenanceSchedule" EntitySet="MaintenanceSchedule" />
+            <End Role="MaintenanceLog" EntitySet="MaintenanceLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order__seatID__76969D2E" Association="Self.FK__Order__seatID__76969D2E">
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__order__797309D9" Association="Self.FK__OrderDeta__order__797309D9">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__roomI__5AEE82B9" Association="Self.FK__Reservati__roomI__5AEE82B9">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restauran__seatI__1CBC4616" Association="Self.FK__Restauran__seatI__1CBC4616">
+            <End Role="Seat" EntitySet="Seat" />
+            <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="DetailTicketTransaction" Association="Self.DetailTicketTransaction">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="TicketTransaction" EntitySet="TicketTransaction" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UnderTheSeaModelStoreContainer" CdmEntityContainer="UnderTheSeaEntities">
+          <EntitySetMapping Name="Advertisement">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Advertisement">
+              <MappingFragment StoreEntitySet="Advertisement">
+                <ScalarProperty Name="advertisementID" ColumnName="advertisementID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AttractionOrRide">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.AttractionOrRide">
+              <MappingFragment StoreEntitySet="AttractionOrRide">
+                <ScalarProperty Name="attractionID" ColumnName="attractionID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CleaningLog">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.CleaningLog">
+              <MappingFragment StoreEntitySet="CleaningLog">
+                <ScalarProperty Name="cleaningLogID" ColumnName="cleaningLogID" />
+                <ScalarProperty Name="roomID" ColumnName="roomID" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="cleaningDate" ColumnName="cleaningDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CleaningSchedule">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.CleaningSchedule">
+              <MappingFragment StoreEntitySet="CleaningSchedule">
+                <ScalarProperty Name="scheduleID" ColumnName="scheduleID" />
+                <ScalarProperty Name="roomID" ColumnName="roomID" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConstructionProgress">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.ConstructionProgress">
+              <MappingFragment StoreEntitySet="ConstructionProgress">
+                <ScalarProperty Name="progressID" ColumnName="progressID" />
+                <ScalarProperty Name="attractionID" ColumnName="attractionID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="progressDate" ColumnName="progressDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="idCardNumber" ColumnName="idCardNumber" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+                <ScalarProperty Name="departmentName" ColumnName="departmentName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailHotelTransaction">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.DetailHotelTransaction">
+              <MappingFragment StoreEntitySet="DetailHotelTransaction">
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+                <ScalarProperty Name="roomID" ColumnName="roomID" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetailRestaurantTransaction">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.DetailRestaurantTransaction">
+              <MappingFragment StoreEntitySet="DetailRestaurantTransaction">
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+                <ScalarProperty Name="foodID" ColumnName="foodID" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedback">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="feedbackID" ColumnName="feedbackID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Food">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Food">
+              <MappingFragment StoreEntitySet="Food">
+                <ScalarProperty Name="foodID" ColumnName="foodID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelTransaction">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.HotelTransaction">
+              <MappingFragment StoreEntitySet="HotelTransaction">
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HRRequest">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.HRRequest">
+              <MappingFragment StoreEntitySet="HRRequest">
+                <ScalarProperty Name="requestID" ColumnName="requestID" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="response" ColumnName="response" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Idea">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Idea">
+              <MappingFragment StoreEntitySet="Idea">
+                <ScalarProperty Name="ideaID" ColumnName="ideaID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="response" ColumnName="response" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingredient">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Ingredient">
+              <MappingFragment StoreEntitySet="Ingredient">
+                <ScalarProperty Name="ingredientID" ColumnName="ingredientID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceLog">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.MaintenanceLog">
+              <MappingFragment StoreEntitySet="MaintenanceLog">
+                <ScalarProperty Name="maintenanceLogID" ColumnName="maintenanceLogID" />
+                <ScalarProperty Name="scheduleID" ColumnName="scheduleID" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaintenanceSchedule">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.MaintenanceSchedule">
+              <MappingFragment StoreEntitySet="MaintenanceSchedule">
+                <ScalarProperty Name="scheduleID" ColumnName="scheduleID" />
+                <ScalarProperty Name="attractionID" ColumnName="attractionID" />
+                <ScalarProperty Name="scheduleDate" ColumnName="scheduleDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="seatID" ColumnName="seatID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="orderID" ColumnName="orderID" />
+                <ScalarProperty Name="foodID" ColumnName="foodID" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonalRequest">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.PersonalRequest">
+              <MappingFragment StoreEntitySet="PersonalRequest">
+                <ScalarProperty Name="requestID" ColumnName="requestID" />
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="response" ColumnName="response" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseLog">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.PurchaseLog">
+              <MappingFragment StoreEntitySet="PurchaseLog">
+                <ScalarProperty Name="purchaseLogID" ColumnName="purchaseLogID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Request">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="requestID" ColumnName="requestID" />
+                <ScalarProperty Name="departmentID" ColumnName="departmentID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="response" ColumnName="response" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservation">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="reservationID" ColumnName="reservationID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="roomID" ColumnName="roomID" />
+                <ScalarProperty Name="checkInDate" ColumnName="checkInDate" />
+                <ScalarProperty Name="checkOutDate" ColumnName="checkOutDate" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RestaurantTransaction">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.RestaurantTransaction">
+              <MappingFragment StoreEntitySet="RestaurantTransaction">
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="seatID" ColumnName="seatID" />
+                <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="roomID" ColumnName="roomID" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Seat">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Seat">
+              <MappingFragment StoreEntitySet="Seat">
+                <ScalarProperty Name="seatID" ColumnName="seatID" />
+                <ScalarProperty Name="chairQuantity" ColumnName="chairQuantity" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="taskDescription" ColumnName="taskDescription" />
+                <ScalarProperty Name="taskID" ColumnName="taskID" />
+                <ScalarProperty Name="ideaID" ColumnName="ideaID" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ticket">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.Ticket">
+              <MappingFragment StoreEntitySet="Ticket">
+                <ScalarProperty Name="ticketID" ColumnName="ticketID" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketTransaction">
+            <EntityTypeMapping TypeName="UnderTheSeaModel.TicketTransaction">
+              <MappingFragment StoreEntitySet="TicketTransaction">
+                <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+                <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DetailTicketTransaction" TypeName="UnderTheSeaModel.DetailTicketTransaction" StoreEntitySet="DetailTicketTransaction">
+            <EndProperty Name="Ticket">
+              <ScalarProperty Name="ticketID" ColumnName="ticketID" />
+            </EndProperty>
+            <EndProperty Name="TicketTransaction">
+              <ScalarProperty Name="transactionID" ColumnName="transactionID" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

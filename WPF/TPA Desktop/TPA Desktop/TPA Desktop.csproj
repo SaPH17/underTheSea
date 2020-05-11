@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ED9706B1-8AE6-44E1-BED0-2B04122B398C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TPA_Desktop</RootNamespace>
+    <AssemblyName>TPA Desktop</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Factory\AdvertisementFactory.cs" />
+    <Compile Include="Factory\AttractionRideFactory.cs" />
+    <Compile Include="Factory\CleaningLogFactory.cs" />
+    <Compile Include="Factory\ConstructionProgressFactory.cs" />
+    <Compile Include="Factory\EmployeeFactory.cs" />
+    <Compile Include="Factory\HRRequestFactory.cs" />
+    <Compile Include="Factory\IdeaFactory.cs" />
+    <Compile Include="Factory\PersonalRequestFactory.cs" />
+    <Compile Include="Factory\PurchaseLogFactory.cs" />
+    <Compile Include="Factory\RequestFactory.cs" />
+    <Compile Include="Factory\TaskFactory.cs" />
+    <Compile Include="Mediator\AdvertisementMediator.cs" />
+    <Compile Include="Mediator\AttractionRideMediator.cs" />
+    <Compile Include="Mediator\CleaningLogMediator.cs" />
+    <Compile Include="Mediator\ConstructionProgressMediator.cs" />
+    <Compile Include="Mediator\DepartmentMediator.cs" />
+    <Compile Include="Mediator\HRRequestMediator.cs" />
+    <Compile Include="Mediator\IdeaMediator.cs" />
+    <Compile Include="Mediator\PersonalRequestMediator.cs" />
+    <Compile Include="Mediator\PurchaseLogMediator.cs" />
+    <Compile Include="Mediator\RequestMediator.cs" />
+    <Compile Include="Mediator\ReservationMediator.cs" />
+    <Compile Include="Mediator\TaskMediator.cs" />
+    <Compile Include="Model\Advertisement.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AttractionOrRide.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CleaningLog.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\CleaningSchedule.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ConstructionProgress.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Customer.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Department.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DetailHotelTransaction.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DetailRestaurantTransaction.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Employee.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Feedback.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Food.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HotelTransaction.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HRRequest.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Idea.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ingredient.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MaintenanceLog.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\MaintenanceSchedule.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Order.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\OrderDetail.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PersonalRequest.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PurchaseLog.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Request.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Reservation.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RestaurantTransaction.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Room.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Seat.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Task.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ticket.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\TicketTransaction.cs">
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UnderTheSea.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnderTheSea.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UnderTheSea.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnderTheSea.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UnderTheSea.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UnderTheSea.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\AdvertisementRepository.cs" />
+    <Compile Include="Repository\AttractionRideRepository.cs" />
+    <Compile Include="Repository\CleaningLogRepository.cs" />
+    <Compile Include="Repository\ConstructionProgressRepository.cs" />
+    <Compile Include="Repository\DepartmentRepository.cs" />
+    <Compile Include="Repository\HRRequestRepository.cs" />
+    <Compile Include="Repository\IdeaRepository.cs" />
+    <Compile Include="Repository\PersonalRequestRepository.cs" />
+    <Compile Include="Repository\PurchaseLogRepository.cs" />
+    <Compile Include="Repository\RequestRepository.cs" />
+    <Compile Include="Repository\ReservationRepository.cs" />
+    <Compile Include="Repository\TaskRepository.cs" />
+    <Compile Include="Views\AccountingFD\AccountingFDView.xaml.cs">
+      <DependentUpon>AccountingFDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountingFD\RequestView.xaml.cs">
+      <DependentUpon>RequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\AddLeaveRequestView.xaml.cs">
+      <DependentUpon>AddLeaveRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\AddPurchaseRequestView.xaml.cs">
+      <DependentUpon>AddPurchaseRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\AddResignRequestView.xaml.cs">
+      <DependentUpon>AddResignRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\PersonalRequestResponseView.xaml.cs">
+      <DependentUpon>PersonalRequestResponseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\RequestResponseView.xaml.cs">
+      <DependentUpon>RequestResponseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConstructionD\AddConstructionProgressView.xaml.cs">
+      <DependentUpon>AddConstructionProgressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConstructionD\ChangeAttractionRideStatusView.xaml.cs">
+      <DependentUpon>ChangeAttractionRideStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConstructionD\ConstructionDView.xaml.cs">
+      <DependentUpon>ConstructionDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConstructionD\TaskView.xaml.cs">
+      <DependentUpon>TaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DiningRDView.xaml.cs">
+      <DependentUpon>DiningRDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrontOfficeDView.xaml.cs">
+      <DependentUpon>FrontOfficeDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HouseKeepingD\AddCleaningLogView.xaml.cs">
+      <DependentUpon>AddCleaningLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HouseKeepingD\HouseKeepingDView.xaml.cs">
+      <DependentUpon>HouseKeepingDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HouseKeepingD\ReservationView.xaml.cs">
+      <DependentUpon>ReservationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRD\AddEmployeeView.xaml.cs">
+      <DependentUpon>AddEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRD\EmployeeView.xaml.cs">
+      <DependentUpon>EmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRD\FireEmployeeView.xaml.cs">
+      <DependentUpon>FireEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRD\HRRequestView.xaml.cs">
+      <DependentUpon>HRRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRD\PersonalRequestView.xaml.cs">
+      <DependentUpon>PersonalRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRD\RaiseSalaryView.xaml.cs">
+      <DependentUpon>RaiseSalaryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KitchenDView.xaml.cs">
+      <DependentUpon>KitchenDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaintenanceDView.xaml.cs">
+      <DependentUpon>MaintenanceDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\IdeaView.xaml.cs">
+      <DependentUpon>IdeaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\ManagerView.xaml.cs">
+      <DependentUpon>ManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Manager\PersonalRequestView.xaml.cs">
+      <DependentUpon>PersonalRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchasingD\AddPurchaseLogView.xaml.cs">
+      <DependentUpon>AddPurchaseLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchasingD\PurchaseLogView.xaml.cs">
+      <DependentUpon>PurchaseLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchasingD\PurchasingDView.xaml.cs">
+      <DependentUpon>PurchasingDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PurchasingD\RequestView.xaml.cs">
+      <DependentUpon>RequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaACreativeD\AddIdeaView.xaml.cs">
+      <DependentUpon>AddIdeaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaACreativeD\AttractionRideView.xaml.cs">
+      <DependentUpon>AttractionRideView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaACreativeD\ConstructionProgressView.xaml.cs">
+      <DependentUpon>ConstructionProgressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaACreativeD\IdeaView.xaml.cs">
+      <DependentUpon>IdeaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaACreativeD\RaACreativeDView.xaml.cs">
+      <DependentUpon>RaACreativeDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalesMarketingD\AddAdvertisementLogView.xaml.cs">
+      <DependentUpon>AddAdvertisementLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalesMarketingD\AdvertisementLogView.xaml.cs">
+      <DependentUpon>AdvertisementLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SalesMarketingD\SalesMDView.xaml.cs">
+      <DependentUpon>SalesMDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\AddFinanceRequestView.xaml.cs">
+      <DependentUpon>AddFinanceRequestView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\AccountingFD\AccountingFDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountingFD\RequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\AddLeaveRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\AddPurchaseRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\AddResignRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\PersonalRequestResponseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\RequestResponseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AttractionDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\BiodataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConstructionD\AddConstructionProgressView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConstructionD\ChangeAttractionRideStatusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConstructionD\ConstructionDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ConstructionD\TaskView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DiningRDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrontOfficeDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HouseKeepingD\AddCleaningLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HouseKeepingD\HouseKeepingDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HouseKeepingD\ReservationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRD\AddEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRD\EmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRD\FireEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRD\HRDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRD\HRRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRD\PersonalRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HRD\RaiseSalaryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KitchenDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\LoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Connection.cs" />
+    <Compile Include="Mediator\EmployeeMediator.cs" />
+    <Compile Include="Repository\EmployeeRepository.cs" />
+    <Compile Include="Views\AttractionDView.xaml.cs">
+      <DependentUpon>AttractionDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\BiodataView.xaml.cs">
+      <DependentUpon>BiodataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HRD\HRDView.xaml.cs">
+      <DependentUpon>HRDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\All\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\MaintenanceDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\IdeaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\ManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\PersonalRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasingD\AddPurchaseLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasingD\PurchaseLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasingD\PurchasingDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PurchasingD\RequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaACreativeD\AddIdeaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaACreativeD\AttractionRideView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaACreativeD\ConstructionProgressView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaACreativeD\IdeaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaACreativeD\RaACreativeDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SalesMarketingD\AddAdvertisementLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SalesMarketingD\AdvertisementLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SalesMarketingD\SalesMDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\All\AddFinanceRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Session.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Model\UnderTheSea.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UnderTheSea.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\UnderTheSea.edmx.diagram">
+      <DependentUpon>UnderTheSea.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="shark.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\DiningRoomD\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\UnderTheSea.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UnderTheSea.edmx</DependentUpon>
+      <LastGenOutput>UnderTheSea.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\UnderTheSea.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UnderTheSea.edmx</DependentUpon>
+      <LastGenOutput>UnderTheSea.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
