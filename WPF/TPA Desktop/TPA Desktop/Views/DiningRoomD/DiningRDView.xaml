@@ -1,0 +1,31 @@
+﻿<Window x:Class="TPA_Desktop.Views.DiningRoomD.DiningRDView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views"
+        mc:Ignorable="d"
+        Title="Dining Room Division" Height="500" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Border Padding="10">
+        <StackPanel>
+            <Frame x:Name="Biodata"></Frame>
+            
+            <TextBlock Margin="10">Order</TextBlock>
+            <Button x:Name="addOrderBtn" Margin="5" Click="addOrderBtn_Click">Add Order</Button>
+            <Button x:Name="checkoutOrderBtn" Margin="5" Click="checkoutOrderBtn_Click">Checkout Order</Button>
+            <Button x:Name="viewOrderBtn" Margin="5" Click="viewOrderBtn_Click">View Order</Button>
+
+            <TextBlock Margin="10">Seat</TextBlock>
+            <Button x:Name="viewSeatBtn" Margin="5" Click="viewSeatBtn_Click">View Seat</Button>
+
+            <TextBlock Margin="10">Feedback</TextBlock>
+            <Button x:Name="viewFeedbackBtn" Margin="5" Click="viewFeedbackBtn_Click">View Feedback</Button>
+
+            <TextBlock Margin="10">Visitor</TextBlock>
+            <Button x:Name="checkTicketBtn" Margin="5" Click="checkTicketBtn_Click">Check Ticket</Button>
+
+        </StackPanel>
+    </Border>
+</Window>

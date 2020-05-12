@@ -31,5 +31,11 @@ namespace TPA_Desktop.Repository
             con.db.SaveChanges();
             return cleaningLog;
         }
+
+        public List<CleaningLog> getAllCleaningLog()
+        {
+            Connection con = Connection.getConnection();
+            return con.db.CleaningLog.ToList();
+        }
     }
 }

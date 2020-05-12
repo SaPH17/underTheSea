@@ -18,8 +18,11 @@ using TPA_Desktop.Views;
 using TPA_Desktop.Views.AccountingFD;
 using TPA_Desktop.Views.ConstructionD;
 using TPA_Desktop.Views.DiningRoomD;
+using TPA_Desktop.Views.FrontOfficeD;
 using TPA_Desktop.Views.HouseKeepingD;
 using TPA_Desktop.Views.HRD;
+using TPA_Desktop.Views.KitchenD;
+using TPA_Desktop.Views.MaintenanceD;
 using TPA_Desktop.Views.Manager;
 using TPA_Desktop.Views.PurchasingD;
 using TPA_Desktop.Views.RaACreativeD;
@@ -55,7 +58,15 @@ namespace TPA_Desktop
                 
                 EmployeeMediator mediator = new EmployeeMediator();
                 Employee employee = mediator.getEmployee(name, password);
-                if(employee == null)
+                
+                if(name == "customer" && password == "customer123")
+                {
+                    this.Visibility = Visibility.Hidden;
+                    CustomerView cview = new CustomerView();
+                    Session.getSession().window = cview;
+                    cview.Show();
+                }
+                else if (employee == null)
                 {
                     errorLbl.Text = "Name/Password is incorrect";
                 }

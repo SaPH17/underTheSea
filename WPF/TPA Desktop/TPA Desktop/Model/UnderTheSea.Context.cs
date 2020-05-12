@@ -32,7 +32,6 @@ namespace TPA_Desktop.Model
         public virtual DbSet<ConstructionProgress> ConstructionProgress { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Department> Department { get; set; }
-        public virtual DbSet<DetailHotelTransaction> DetailHotelTransaction { get; set; }
         public virtual DbSet<DetailRestaurantTransaction> DetailRestaurantTransaction { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Feedback> Feedback { get; set; }

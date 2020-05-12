@@ -18,12 +18,9 @@ namespace TPA_Desktop.Repository
             if(con == null)
             {
                 con = new Connection();
-                return con;
             }
-            else
-            {
-                return con;
-            }
+            return con;
+
         }
     }
 }

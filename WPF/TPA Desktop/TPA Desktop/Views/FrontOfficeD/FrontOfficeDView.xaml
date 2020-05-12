@@ -1,0 +1,32 @@
+﻿<Window x:Class="TPA_Desktop.Views.FrontOfficeD.FrontOfficeDView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views"
+        mc:Ignorable="d"
+        Title="Front Office Division" Height="525" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Border Padding="10">
+        <StackPanel>
+            <Frame x:Name="Biodata"></Frame>
+            
+            <TextBlock Margin="10">Customer</TextBlock>
+            <Button x:Name="checkinCustomerBtn" Margin="5" Click="checkinCustomerBtn_Click">Check in Customer</Button>
+            <Button x:Name="checkoutCustomerBtn" Margin="5" Click="checkoutCustomerBtn_Click">Check out Customer</Button>
+            <Button x:Name="viewReservationBtn" Margin="5" Click="viewReservationBtn_Click">View All Reservation</Button>
+
+            <TextBlock Margin="10">Room</TextBlock>
+            <Button x:Name="viewAllRoomBtn" Margin="5" Click="viewAllRoomBtn_Click">View All Room</Button>
+
+            <TextBlock Margin="10">Cleaning</TextBlock>
+            <Button x:Name="addCleaningScheduleBtn" Margin="5" Click="addCleaningScheduleBtn_Click">Add Cleaning Schedule</Button>
+            <Button x:Name="viewCleaningLogBtn" Margin="5" Click="viewCleaningLogBtn_Click">View Cleaning Log</Button>
+
+            <TextBlock Margin="10">Feedback</TextBlock>
+            <Button x:Name="viewFeedbackBtn" Margin="5" Click="viewFeedbackBtn_Click">View Feedback</Button>
+
+        </StackPanel>
+    </Border>
+</Window>

@@ -46,19 +46,26 @@ namespace TPA_Desktop.Views.ConstructionD
             }
             else
             {
-                ConstructionProgressMediator mediator = new ConstructionProgressMediator();
-                ConstructionProgressFactory factory = new ConstructionProgressFactory();
-
-                ConstructionProgress cp = mediator.addConstructionProgress(factory.createNewConstructionProgress(attractionID,  title, desc, progressDate));
-                if(cp == null)
+                if(new AttractionRideMediator().getAttractionOrRide(attractionID) == null)
                 {
-                    MessageBox.Show("Add construction progress failed!");
+                    errorLbl.Text = "Attraction ID invalid!";
                 }
                 else
                 {
-                    MessageBox.Show("Add construction progress success!");
+                    ConstructionProgressMediator mediator = new ConstructionProgressMediator();
+                    ConstructionProgressFactory factory = new ConstructionProgressFactory();
+
+                    ConstructionProgress cp = mediator.addConstructionProgress(factory.createNewConstructionProgress(attractionID, title, desc, progressDate));
+                    if (cp == null)
+                    {
+                        MessageBox.Show("Add construction progress failed!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Add construction progress success!");
+                    }
+                    this.Close();
                 }
-                this.Visibility = Visibility.Hidden;
             }
         }
     }

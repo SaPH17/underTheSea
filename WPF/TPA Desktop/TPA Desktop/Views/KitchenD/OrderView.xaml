@@ -1,0 +1,56 @@
+﻿<Window x:Class="TPA_Desktop.Views.KitchenD.OrderView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views.KitchenD"
+        mc:Ignorable="d"
+        Title="View Order" Height="500" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue"
+        Loaded="Window_Loaded">
+    <Border Padding="10">
+        <StackPanel>
+            <DataGrid x:Name="orderView"></DataGrid>
+            <DataGrid x:Name="orderDetailView"></DataGrid>
+
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0">Order ID     :</TextBlock>
+                <TextBox Grid.Column="1" Padding="2" x:Name="orderIDTxt" TextChanged="orderIDTxt_TextChanged"></TextBox>
+            </Grid>
+
+            <Grid Margin="0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" VerticalAlignment="Center">Status     :</TextBlock>
+                <ComboBox Grid.Column="1" x:Name="statusComboBox">
+                    <ComboBoxItem>Waiting</ComboBoxItem>
+                    <ComboBoxItem>Being Cooked</ComboBoxItem>
+                    <ComboBoxItem>Finished Cooked</ComboBoxItem>
+                </ComboBox>
+            </Grid>
+
+            <TextBlock x:Name="errorLbl" Foreground="Red" FontSize="12pt" Margin="15 10 5 5"></TextBlock>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="submitBtn" Margin="0 15 0 0" Grid.Column="1" Click="submitBtn_Click">Submit</Button>
+
+            </Grid>
+
+        </StackPanel>
+    </Border>
+</Window>

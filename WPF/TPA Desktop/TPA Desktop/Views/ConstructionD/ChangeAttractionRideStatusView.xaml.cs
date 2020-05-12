@@ -57,7 +57,7 @@ namespace TPA_Desktop.Views.ConstructionD
                 {
                     MessageBox.Show("Update status successful!");
                 }
-                this.Visibility = Visibility.Hidden;
+                this.Close();
             }
         }
     }

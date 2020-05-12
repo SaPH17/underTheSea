@@ -73,25 +73,46 @@
     <Compile Include="Factory\AdvertisementFactory.cs" />
     <Compile Include="Factory\AttractionRideFactory.cs" />
     <Compile Include="Factory\CleaningLogFactory.cs" />
+    <Compile Include="Factory\CleaningScheduleFactory.cs" />
     <Compile Include="Factory\ConstructionProgressFactory.cs" />
+    <Compile Include="Factory\CustomerFactory.cs" />
     <Compile Include="Factory\EmployeeFactory.cs" />
+    <Compile Include="Factory\FeedbackFactory.cs" />
+    <Compile Include="Factory\HotelTransactionFactory.cs" />
     <Compile Include="Factory\HRRequestFactory.cs" />
     <Compile Include="Factory\IdeaFactory.cs" />
+    <Compile Include="Factory\MaintenanceLogFactory.cs" />
+    <Compile Include="Factory\MaintenanceScheduleFactory.cs" />
+    <Compile Include="Factory\OrderFactory.cs" />
     <Compile Include="Factory\PersonalRequestFactory.cs" />
     <Compile Include="Factory\PurchaseLogFactory.cs" />
     <Compile Include="Factory\RequestFactory.cs" />
+    <Compile Include="Factory\ReservationFactory.cs" />
+    <Compile Include="Factory\RestaurantTransactionFactory.cs" />
     <Compile Include="Factory\TaskFactory.cs" />
     <Compile Include="Mediator\AdvertisementMediator.cs" />
     <Compile Include="Mediator\AttractionRideMediator.cs" />
     <Compile Include="Mediator\CleaningLogMediator.cs" />
+    <Compile Include="Mediator\CleaningScheduleMediator.cs" />
     <Compile Include="Mediator\ConstructionProgressMediator.cs" />
+    <Compile Include="Mediator\CustomerMediator.cs" />
     <Compile Include="Mediator\DepartmentMediator.cs" />
+    <Compile Include="Mediator\FeedbackMediator.cs" />
+    <Compile Include="Mediator\FoodMediator.cs" />
+    <Compile Include="Mediator\HotelTransactionMediator.cs" />
     <Compile Include="Mediator\HRRequestMediator.cs" />
     <Compile Include="Mediator\IdeaMediator.cs" />
+    <Compile Include="Mediator\IngredientStockMediator.cs" />
+    <Compile Include="Mediator\MaintenanceLogMediator.cs" />
+    <Compile Include="Mediator\MaintenanceScheduleMediator.cs" />
+    <Compile Include="Mediator\OrderMediator.cs" />
     <Compile Include="Mediator\PersonalRequestMediator.cs" />
     <Compile Include="Mediator\PurchaseLogMediator.cs" />
     <Compile Include="Mediator\RequestMediator.cs" />
     <Compile Include="Mediator\ReservationMediator.cs" />
+    <Compile Include="Mediator\RestaurantTransactionMediator.cs" />
+    <Compile Include="Mediator\RoomMediator.cs" />
+    <Compile Include="Mediator\SeatMediator.cs" />
     <Compile Include="Mediator\TaskMediator.cs" />
     <Compile Include="Model\Advertisement.cs">
       <DependentUpon>UnderTheSea.tt</DependentUpon>
@@ -112,9 +133,6 @@
       <DependentUpon>UnderTheSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Department.cs">
-      <DependentUpon>UnderTheSea.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\DetailHotelTransaction.cs">
       <DependentUpon>UnderTheSea.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\DetailRestaurantTransaction.cs">
@@ -201,14 +219,26 @@
     <Compile Include="Repository\AdvertisementRepository.cs" />
     <Compile Include="Repository\AttractionRideRepository.cs" />
     <Compile Include="Repository\CleaningLogRepository.cs" />
+    <Compile Include="Repository\CleaningScheduleRepository.cs" />
     <Compile Include="Repository\ConstructionProgressRepository.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\DepartmentRepository.cs" />
+    <Compile Include="Repository\FeedbackRepository.cs" />
+    <Compile Include="Repository\FoodRepository.cs" />
+    <Compile Include="Repository\HotelTransactionRepository.cs" />
     <Compile Include="Repository\HRRequestRepository.cs" />
     <Compile Include="Repository\IdeaRepository.cs" />
+    <Compile Include="Repository\IngredientStockRepository.cs" />
+    <Compile Include="Repository\MaintenanceLogRepository.cs" />
+    <Compile Include="Repository\MaintenanceScheduleRepository.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Repository\PersonalRequestRepository.cs" />
     <Compile Include="Repository\PurchaseLogRepository.cs" />
     <Compile Include="Repository\RequestRepository.cs" />
     <Compile Include="Repository\ReservationRepository.cs" />
+    <Compile Include="Repository\RestaurantTransactionRepository.cs" />
+    <Compile Include="Repository\RoomRepository.cs" />
+    <Compile Include="Repository\SeatRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Views\AccountingFD\AccountingFDView.xaml.cs">
       <DependentUpon>AccountingFDView.xaml</DependentUpon>
@@ -243,14 +273,47 @@
     <Compile Include="Views\ConstructionD\TaskView.xaml.cs">
       <DependentUpon>TaskView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DiningRDView.xaml.cs">
+    <Compile Include="Views\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DiningRoomD\AddOrderView.xaml.cs">
+      <DependentUpon>AddOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DiningRoomD\CheckoutOrderView.xaml.cs">
+      <DependentUpon>CheckoutOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DiningRoomD\DiningRDView.xaml.cs">
       <DependentUpon>DiningRDView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrontOfficeDView.xaml.cs">
+    <Compile Include="Views\DiningRoomD\FeedbackView.xaml.cs">
+      <DependentUpon>FeedbackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DiningRoomD\SeatView.xaml.cs">
+      <DependentUpon>SeatView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrontOfficeD\AddCleaningScheduleView.xaml.cs">
+      <DependentUpon>AddCleaningScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrontOfficeD\CheckInView.xaml.cs">
+      <DependentUpon>CheckInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrontOfficeD\CheckOutView.xaml.cs">
+      <DependentUpon>CheckOutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrontOfficeD\CleaningLogView.xaml.cs">
+      <DependentUpon>CleaningLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrontOfficeD\FrontOfficeDView.xaml.cs">
       <DependentUpon>FrontOfficeDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FrontOfficeD\RoomView.xaml.cs">
+      <DependentUpon>RoomView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HouseKeepingD\AddCleaningLogView.xaml.cs">
       <DependentUpon>AddCleaningLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HouseKeepingD\CleaningScheduleView.xaml.cs">
+      <DependentUpon>CleaningScheduleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HouseKeepingD\HouseKeepingDView.xaml.cs">
       <DependentUpon>HouseKeepingDView.xaml</DependentUpon>
@@ -276,11 +339,29 @@
     <Compile Include="Views\HRD\RaiseSalaryView.xaml.cs">
       <DependentUpon>RaiseSalaryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\KitchenDView.xaml.cs">
+    <Compile Include="Views\KitchenD\IngredientStockView.xaml.cs">
+      <DependentUpon>IngredientStockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\KitchenD\KitchenDView.xaml.cs">
       <DependentUpon>KitchenDView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MaintenanceDView.xaml.cs">
+    <Compile Include="Views\KitchenD\OrderView.xaml.cs">
+      <DependentUpon>OrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaintenanceD\AddMaintenanceLogView.xaml.cs">
+      <DependentUpon>AddMaintenanceLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaintenanceD\AddMaintenanceScheduleView.xaml.cs">
+      <DependentUpon>AddMaintenanceScheduleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaintenanceD\MaintenanceDView.xaml.cs">
       <DependentUpon>MaintenanceDView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaintenanceD\MaintenanceLogView.xaml.cs">
+      <DependentUpon>MaintenanceLogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaintenanceD\MaintenanceScheduleView.xaml.cs">
+      <DependentUpon>MaintenanceScheduleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Manager\IdeaView.xaml.cs">
       <DependentUpon>IdeaView.xaml</DependentUpon>
@@ -382,15 +463,59 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\DiningRDView.xaml">
+    <Page Include="Views\CustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\FrontOfficeDView.xaml">
+    <Page Include="Views\DiningRoomD\AddOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DiningRoomD\CheckoutOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DiningRoomD\DiningRDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DiningRoomD\FeedbackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DiningRoomD\SeatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrontOfficeD\AddCleaningScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrontOfficeD\CheckInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrontOfficeD\CheckOutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrontOfficeD\CleaningLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrontOfficeD\FrontOfficeDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\FrontOfficeD\RoomView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HouseKeepingD\AddCleaningLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HouseKeepingD\CleaningScheduleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -430,7 +555,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\KitchenDView.xaml">
+    <Page Include="Views\KitchenD\IngredientStockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\KitchenD\KitchenDView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -458,7 +587,27 @@
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\MaintenanceDView.xaml">
+    <Page Include="Views\KitchenD\OrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MaintenanceD\AddMaintenanceLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MaintenanceD\AddMaintenanceScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MaintenanceD\MaintenanceDView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MaintenanceD\MaintenanceLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MaintenanceD\MaintenanceScheduleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -569,9 +718,7 @@
   <ItemGroup>
     <Resource Include="shark.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\DiningRoomD\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Model\UnderTheSea.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

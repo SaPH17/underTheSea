@@ -51,13 +51,12 @@ namespace TPA_Desktop.Views.HRD
                 if (request != null)
                 {
                     MessageBox.Show("Request " + request.title + " has been Added!");
-                    this.Visibility = Visibility.Hidden;
                 }
                 else
                 {
                     MessageBox.Show("Sending request failed");
-                    this.Visibility = Visibility.Hidden;
                 }
+                this.Close();
             }
         }
     }

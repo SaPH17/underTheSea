@@ -1,0 +1,26 @@
+﻿<Window x:Class="TPA_Desktop.Views.KitchenD.KitchenDView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views"
+        mc:Ignorable="d"
+        Title="Kitchen Division" Height="400" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Border Padding="10">
+        <StackPanel>
+            <Frame x:Name="Biodata"></Frame>
+            
+            <TextBlock Margin="10">Food Order</TextBlock>
+            <Button x:Name="viewOrderBtn" Margin="5" Click="viewOrderBtn_Click">View Order</Button>
+
+            <TextBlock Margin="10">Ingredient Stock</TextBlock>
+            <Button x:Name="viewIngredientStockBtn" Margin="5" Click="viewIngredientStockBtn_Click">View Ingredient Stock</Button>
+
+            <TextBlock Margin="10">Purchase Request</TextBlock>
+            <Button x:Name="viewRequestResponseBtn" Margin="5" Click="viewRequestResponseBtn_Click">View Request Response</Button>
+
+        </StackPanel>
+    </Border>
+</Window>

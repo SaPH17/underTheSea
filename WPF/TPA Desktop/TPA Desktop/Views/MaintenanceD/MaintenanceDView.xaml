@@ -1,0 +1,29 @@
+﻿<Window x:Class="TPA_Desktop.Views.MaintenanceD.MaintenanceDView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TPA_Desktop.Views"
+        mc:Ignorable="d"
+        Title="Maintenance Department" Height="500" Width="525"
+        WindowStartupLocation="CenterScreen"
+        Background="LightBlue">
+    <Border Padding="10">
+        <StackPanel>
+            <Frame x:Name="Biodata"></Frame>
+            
+            <TextBlock Margin="10">Maintenance Schedule</TextBlock>
+            <Button x:Name="addMaintenanceScheduleBtn" Margin="5" Click="addMaintenanceScheduleBtn_Click">Add Maintenance Schedule</Button>
+            <Button x:Name="viewMaintenanceScheduleBtn" Margin="5" Click="viewMaintenanceScheduleBtn_Click">View Maintenance Schedule</Button>
+            
+            <TextBlock Margin="10">Maintenance Log</TextBlock>
+            <Button x:Name="addMaintenanceLogBtn" Margin="5" Click="addMaintenanceLogBtn_Click">Add Maintenance Log</Button>
+            <Button x:Name="viewMaintenanceLogBtn" Margin="5" Click="viewMaintenanceLogBtn_Click">View Maintenance Log</Button>
+
+            <TextBlock Margin="10">Attraction and Ride</TextBlock>
+            <Button x:Name="viewAttractionOrRideBtn" Margin="5" Click="viewAttractionOrRideBtn_Click">View Attraction and Ride</Button>
+            <Button x:Name="changeAttractionOrRideStatusBtn" Margin="5" Click="changeAttractionOrRideStatusBtn_Click">Change Attraction or Ride Status</Button>
+
+        </StackPanel>
+    </Border>
+</Window>

@@ -21,5 +21,11 @@ namespace TPA_Desktop.Mediator
             CleaningLogRepository repository = new CleaningLogRepository();
             return repository.addCleaningLog(cleaningLog);
         }
+
+        public List<CleaningLog> getAllCleaningLog()
+        {
+            CleaningLogRepository repository = new CleaningLogRepository();
+            return repository.getAllCleaningLog();
+        }
     }
 }

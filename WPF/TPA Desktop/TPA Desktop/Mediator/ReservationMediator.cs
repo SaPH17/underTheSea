@@ -15,5 +15,17 @@ namespace TPA_Desktop.Mediator
             ReservationRepository repository = new ReservationRepository();
             return repository.getAllReservation();
         }
+
+        public Reservation addReservation(Reservation reservation)
+        {
+            ReservationRepository repository = new ReservationRepository();
+            return repository.addReservation(reservation);
+        }
+
+        public int getLastID()
+        {
+            ReservationRepository repository = new ReservationRepository();
+            return repository.getLastID();
+        }
     }
 }

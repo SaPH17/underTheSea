@@ -38,7 +38,7 @@ namespace TPA_Desktop.Views.All
         private void logoutBtn_Click(object sender, RoutedEventArgs e)
         {
             Session.getSession().employee = null;
-            Session.getSession().window.Visibility = Visibility.Hidden;
+            Session.getSession().window.Close();
             Session.getSession().window = null;
             new LoginPage().Show();
         }

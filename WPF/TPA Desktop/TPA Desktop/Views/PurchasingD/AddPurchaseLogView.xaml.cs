@@ -59,7 +59,7 @@ namespace TPA_Desktop.Views.PurchasingD
                 {
                     MessageBox.Show("Add purchase log success!");
                 }
-
+                this.Close();
             }
         }
     }

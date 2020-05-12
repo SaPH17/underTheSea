@@ -47,17 +47,26 @@ namespace TPA_Desktop.Views.HouseKeepingD
                 }
                 else
                 {
-                    CleaningLogFactory factory = new CleaningLogFactory();
-                    CleaningLogMediator mediator = new CleaningLogMediator();
 
-                    CleaningLog cleaningLog = mediator.addCleaningLog(factory.createNewCleaningLog(roomID, desc, cleaningDate));
-                    if(cleaningLog == null)
+                    if(new RoomMediator().getRoom(roomID) == null)
                     {
-                        MessageBox.Show("Add cleaning log failed!");
+                        errorLbl.Text = "Room doesn't exist";
                     }
                     else
                     {
-                        MessageBox.Show("Add cleaning log success!");
+                        CleaningLogFactory factory = new CleaningLogFactory();
+                        CleaningLogMediator mediator = new CleaningLogMediator();
+
+                        CleaningLog cleaningLog = mediator.addCleaningLog(factory.createNewCleaningLog(roomID, desc, cleaningDate));
+                        if (cleaningLog == null)
+                        {
+                            MessageBox.Show("Add cleaning log failed!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Add cleaning log success!");
+                        }
+                        this.Close();
                     }
                 }
             }

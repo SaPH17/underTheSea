@@ -44,13 +44,12 @@ namespace TPA_Desktop.Views.SalesMarketingD
                 if(advertisement == null)
                 {
                     MessageBox.Show("Add advertisement failed!");
-                    this.Visibility = Visibility.Hidden;
                 }
                 else
                 {
                     MessageBox.Show("Add advertisement success!");
-                    this.Visibility = Visibility.Hidden;
                 }
+                this.Close();
             }
         }
     }

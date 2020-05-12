@@ -15,7 +15,7 @@ namespace TPA_Desktop.Factory
             CleaningLogMediator mediator = new CleaningLogMediator();
 
             CleaningLog cleaningLog = new CleaningLog();
-            cleaningLog.cleaningLogID = mediator.getLastID();
+            cleaningLog.cleaningLogID = mediator.getLastID() + 1;
             cleaningLog.roomID = roomID;
             cleaningLog.description = desc;
             cleaningLog.cleaningDate = cleaningDate;

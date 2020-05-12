@@ -20,12 +20,8 @@ namespace TPA_Desktop
             if(session == null)
             {
                 session = new Session();
-                return session;
             }
-            else
-            {
-                return session;
-            }
+            return session;
         }
     }
 }

@@ -52,7 +52,7 @@ namespace TPA_Desktop.Views.RaACreativeD
                 {
                     MessageBox.Show("Add idea success!");
                 }
-                this.Visibility = Visibility.Hidden;
+                this.Close();
             }
         }
     }

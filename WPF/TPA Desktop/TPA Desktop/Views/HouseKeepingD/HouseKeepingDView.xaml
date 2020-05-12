@@ -13,6 +13,7 @@
             <Frame x:Name="Biodata"></Frame>
             <Button x:Name="addCleaningLogBtn" Margin="5" Click="addCleaningLogBtn_Click">Add Cleaning Log</Button>
             <Button x:Name="viewReservationBtn" Margin="5" Click="viewReservationBtn_Click">View All Reservation</Button>
+            <Button x:Name="viewCleaningScheduleBtn" Margin="5" Click="viewCleaningScheduleBtn_Click">View All Cleaning Schedule</Button>
         </StackPanel>
     </Border>
 </Window>

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f338ef532bb74fe7b0b5fe63c45287c2" Name="Diagram1" ZoomLevel="64">
+      <Diagram DiagramId="f338ef532bb74fe7b0b5fe63c45287c2" Name="Diagram1" ZoomLevel="83">
         <EntityTypeShape EntityType="UnderTheSeaModel.Advertisement" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaModel.AttractionOrRide" Width="1.5" PointX="3.75" PointY="18.625" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaModel.CleaningLog" Width="1.5" PointX="10.5" PointY="16.5" IsExpanded="true" />
@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="UnderTheSeaModel.ConstructionProgress" Width="1.5" PointX="6" PointY="21.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaModel.Customer" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaModel.Department" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UnderTheSeaModel.DetailHotelTransaction" Width="1.5" PointX="10.5" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaModel.DetailRestaurantTransaction" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaModel.Employee" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="UnderTheSeaModel.Feedback" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
@@ -45,8 +44,6 @@
         <AssociationConnector Association="UnderTheSeaModel.FK__Employee__depart__06CD04F7" ManuallyRouted="false" />
         <AssociationConnector Association="UnderTheSeaModel.FK__PersonalR__depar__3A4CA8FD" ManuallyRouted="false" />
         <AssociationConnector Association="UnderTheSeaModel.FK__Request__departm__3493CFA7" ManuallyRouted="false" />
-        <AssociationConnector Association="UnderTheSeaModel.FK__DetailHot__roomI__123EB7A3" ManuallyRouted="false" />
-        <AssociationConnector Association="UnderTheSeaModel.FK__DetailHot__trans__114A936A" ManuallyRouted="false" />
         <AssociationConnector Association="UnderTheSeaModel.FK__DetailRes__foodI__208CD6FA" ManuallyRouted="false" />
         <AssociationConnector Association="UnderTheSeaModel.FK__DetailRes__trans__1F98B2C1" ManuallyRouted="false" />
         <AssociationConnector Association="UnderTheSeaModel.FK__HotelTran__emplo__0E6E26BF" ManuallyRouted="false" />
@@ -63,6 +60,7 @@
         <AssociationConnector Association="UnderTheSeaModel.FK__Reservati__roomI__5AEE82B9" ManuallyRouted="false" />
         <AssociationConnector Association="UnderTheSeaModel.FK__Restauran__seatI__1CBC4616" ManuallyRouted="false" />
         <AssociationConnector Association="UnderTheSeaModel.DetailTicketTransaction" ManuallyRouted="false" />
+        <AssociationConnector Association="UnderTheSeaModel.FK__HotelTran__roomI__634EBE90" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

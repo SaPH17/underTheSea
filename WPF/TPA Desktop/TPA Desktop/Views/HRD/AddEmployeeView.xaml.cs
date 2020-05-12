@@ -54,13 +54,12 @@ namespace TPA_Desktop.Views.HRD
                 if(employee != null)
                 {
                     MessageBox.Show("Employee " + employee.name + " has been Added!");
-                    this.Visibility = Visibility.Hidden;
                 }
                 else
                 {
                     MessageBox.Show("Add employee failed!");
-                    this.Visibility = Visibility.Hidden;
                 }
+                this.Close();
             }
         }
     }

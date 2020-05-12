@@ -35,5 +35,10 @@ namespace TPA_Desktop.Views.HouseKeepingD
         {
             new ReservationView().Show();
         }
+
+        private void viewCleaningScheduleBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new CleaningScheduleView().Show();
+        }
     }
 }

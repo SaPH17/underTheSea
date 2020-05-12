@@ -32,6 +32,7 @@
                     <ComboBoxItem>In progress of constructing</ComboBoxItem>
                     <ComboBoxItem>Finished constructing</ComboBoxItem>
                     <ComboBoxItem>Active</ComboBoxItem>
+                    <ComboBoxItem>Maintenanced</ComboBoxItem>
                 </ComboBox>
             </Grid>
 
