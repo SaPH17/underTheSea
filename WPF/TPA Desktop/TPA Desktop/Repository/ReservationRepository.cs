@@ -35,5 +35,22 @@ namespace TPA_Desktop.Repository
             }
             return reservation.reservationID;
         }
+
+        public Reservation getReservation(int reservationID)
+        {
+            Connection con = Connection.getConnection();
+            return con.db.Reservation.Find(reservationID);
+        }
+
+        public Reservation updateReservation(int reservationID, Reservation reservation)
+        {
+            Connection con = Connection.getConnection();
+
+            Reservation newReservation = con.db.Reservation.Find(reservationID);
+            newReservation = reservation;
+            con.db.SaveChanges();
+
+            return newReservation;
+        }
     }
 }

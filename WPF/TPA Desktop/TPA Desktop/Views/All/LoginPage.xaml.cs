@@ -16,6 +16,7 @@ using TPA_Desktop.Mediator;
 using TPA_Desktop.Model;
 using TPA_Desktop.Views;
 using TPA_Desktop.Views.AccountingFD;
+using TPA_Desktop.Views.AttractionD;
 using TPA_Desktop.Views.ConstructionD;
 using TPA_Desktop.Views.DiningRoomD;
 using TPA_Desktop.Views.FrontOfficeD;

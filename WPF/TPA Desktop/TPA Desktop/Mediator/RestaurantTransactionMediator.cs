@@ -27,5 +27,11 @@ namespace TPA_Desktop.Mediator
             RestaurantTransactionRepository repository = new RestaurantTransactionRepository();
             return repository.getLastID();
         }
+
+        public List<RestaurantTransaction> getAllRestaurantTransaction()
+        {
+            RestaurantTransactionRepository repository = new RestaurantTransactionRepository();
+            return repository.getAllRestaurantTransaction();
+        }
     }
 }

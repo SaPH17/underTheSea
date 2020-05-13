@@ -12,7 +12,7 @@ namespace TPA_Desktop.Repository
         public List<AttractionOrRide> getAllAttractionRide()
         {
             Connection con = Connection.getConnection();
-            return con.db.AttractionOrRide.ToList();
+            return (from a in con.db.AttractionOrRide where a.status != "Inactive" select a).ToList();
         }
 
         public int getLastID()

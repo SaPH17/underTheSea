@@ -82,7 +82,7 @@ namespace TPA_Desktop.Views.DiningRoomD
                 }
 
                 order = mediator.getOrderBySeat(seatID);
-                OrderDetail existingOrder = mediator.getOrder(order.orderID, foodID);
+                OrderDetail existingOrder = mediator.getOrderDetail(order.orderID, foodID);
                 OrderDetail orderDetail;
                 if (existingOrder == null)
                 {

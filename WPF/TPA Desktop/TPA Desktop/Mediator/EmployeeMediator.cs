@@ -40,5 +40,11 @@ namespace TPA_Desktop.Mediator
             return rep.getLastID();
         }
 
+        public Employee updateEmployee(int employeeID, Employee employee)
+        {
+            EmployeeRepository rep = new EmployeeRepository();
+            return rep.updateEmployee(employeeID, employee);
+        }
+
     }
 }

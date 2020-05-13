@@ -26,5 +26,11 @@ namespace TPA_Desktop.Mediator
             TaskRepository repository = new TaskRepository();
             return repository.getAllTask();
         }
+
+        public Task updateTask(int taskID, Task task)
+        {
+            TaskRepository repository = new TaskRepository();
+            return repository.updateTask(taskID, task);
+        }
     }
 }

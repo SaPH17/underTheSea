@@ -49,5 +49,15 @@ namespace TPA_Desktop.Repository
 
             return result.ToList();
         }
+
+        public Task updateTask(int taskID, Task task)
+        {
+            Connection con = Connection.getConnection();
+            Task newTask = con.db.Task.Find(taskID);
+            newTask = task;
+            con.db.SaveChanges();
+
+            return newTask;
+        }
     }
 }

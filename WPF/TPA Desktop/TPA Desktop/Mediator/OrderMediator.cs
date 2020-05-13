@@ -52,7 +52,7 @@ namespace TPA_Desktop.Mediator
             return repository.addOrderDetail(orderDetail);
         }
 
-        public OrderDetail getOrder(int orderID, int foodID)
+        public OrderDetail getOrderDetail(int orderID, int foodID)
         {
             OrderRepository repository = new OrderRepository();
             return repository.getOrderDetail(orderID, foodID);

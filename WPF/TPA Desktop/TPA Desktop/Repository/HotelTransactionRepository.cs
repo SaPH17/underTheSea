@@ -20,5 +20,21 @@ namespace TPA_Desktop.Repository
             }
             return transaction.transactionID;
         }
+
+        public HotelTransaction addHotelTransaction(HotelTransaction transaction)
+        {
+            Connection con = Connection.getConnection();
+            con.db.HotelTransaction.Add(transaction);
+            con.db.SaveChanges();
+
+            return transaction;
+
+        }
+
+        public List<HotelTransaction> getAllHotelTransaction()
+        {
+            Connection con = Connection.getConnection();
+            return con.db.HotelTransaction.ToList();
+        }
     }
 }

@@ -14,19 +14,12 @@ namespace TPA_Desktop.Model
     
     public partial class TicketTransaction
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TicketTransaction()
-        {
-            this.Ticket = new HashSet<Ticket>();
-        }
-    
         public int transactionID { get; set; }
         public Nullable<int> employeeID { get; set; }
-        public Nullable<int> quantity { get; set; }
+        public Nullable<int> ticketID { get; set; }
         public Nullable<System.DateTime> purchaseDate { get; set; }
     
         public virtual Employee Employee { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Ticket> Ticket { get; set; }
+        public virtual Ticket Ticket { get; set; }
     }
 }

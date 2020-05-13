@@ -63,6 +63,10 @@ namespace TPA_Desktop.Views.FrontOfficeD
             {
                 errorLbl.Text = "Room ID must be a number";
             }
+            else if(DateTime.Now.Hour < 10 || DateTime.Now.Hour > 20)
+            {
+                errorLbl.Text = "Not check in time!";
+            }
             else if(customerCardID == "" || !checkInDate.HasValue || !checkOutDate.HasValue)
             {
                 errorLbl.Text = "Please input all field!";
@@ -91,6 +95,7 @@ namespace TPA_Desktop.Views.FrontOfficeD
                         Reservation reservation = mediator.addReservation(factory.createNewReservation(customer.customerID, roomID, checkInDate, checkOutDate));
                         room.status = "Not Available";
                         room = rmediator.updateRoom(roomID, room);
+                        totalPriceTxt.Text = "Total Price = Rp. " + room.price;
                         if(reservation == null)
                         {
                             MessageBox.Show("Reservation failed!");

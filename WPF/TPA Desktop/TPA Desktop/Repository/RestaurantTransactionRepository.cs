@@ -50,5 +50,11 @@ namespace TPA_Desktop.Repository
             }
             return transaction.transactionID;
         }
+
+        public List<RestaurantTransaction> getAllRestaurantTransaction()
+        {
+            Connection con = Connection.getConnection();
+            return con.db.RestaurantTransaction.ToList();
+        }
     }
 }

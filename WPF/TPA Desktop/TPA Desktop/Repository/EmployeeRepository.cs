@@ -20,7 +20,7 @@ namespace TPA_Desktop.Repository
         {
             Connection con = Connection.getConnection();
             Employee employee = (from e in con.db.Employee where e.name == name 
-                                    && e.password == password select e).FirstOrDefault();
+                                    && e.password == password && e.status != "Inactive" select e).FirstOrDefault();
             return employee;
         }
 
@@ -30,6 +30,7 @@ namespace TPA_Desktop.Repository
 
             var result =  from e in con.db.Employee
                    join d in con.db.Department on e.departmentID equals d.departmentID
+                   where e.status != "Inactive"
                    select new
                    {
                        e.employeeID,
@@ -60,6 +61,16 @@ namespace TPA_Desktop.Repository
                 return 0;
             }
             return employee.employeeID;
+        }
+
+        public Employee updateEmployee(int employeeID, Employee employee)
+        {
+            Connection con = Connection.getConnection();
+
+            Employee e = con.db.Employee.Find(employeeID);
+            e = employee;
+            con.db.SaveChanges();
+            return e;
         }
 
     }

@@ -44,6 +44,9 @@ VALUES (5, 1, 'Martin', 'ayamgeprek', 1000, '2002-02-11', 'Active')
 
 SELECT * FROM Employee
 
+UPDATE Employee
+SET [status] = 'Active'
+
 DELETE FROM Employee WHERE employeeID = 6
 
 CREATE TABLE Request(
@@ -148,6 +151,8 @@ CREATE TABLE MaintenanceLog(
 	[description] varchar(255)
 )
 
+DELETE FROM MaintenanceLog
+
 DROP TABLE MaintenanceLog
 
 CREATE TABLE Customer(
@@ -165,6 +170,11 @@ SELECT * FROM Customer
 INSERT INTO Customer
 VALUES(1, '1212', 'Bambang', '01-01-2001', 'abc', 'Male', 'Active')
 
+DELETE FROM Customer
+
+INSERT INTO Customer
+VALUES(0, '000000', 'Anonymous', '01-01-1970', 'None', '-', 'Active')
+
 CREATE TABLE Feedback(
 	feedbackID int PRIMARY KEY NOT NULL,
 	customerID int FOREIGN KEY REFERENCES Customer(customerID),
@@ -173,12 +183,20 @@ CREATE TABLE Feedback(
 	[description] varchar(255)
 )
 
+SELECT * FROM Feedback
+
+DELETE FROM Feedback
+
 CREATE TABLE HotelTransaction(
 	transactionID int PRIMARY KEY NOT NULL,
 	customerID int FOREIGN KEY REFERENCES Customer(customerID),
 	employeeID int FOREIGN KEY REFERENCES Employee(employeeID),
-	purchaseDate date
+	roomID int FOREIGN KEY REFERENCES Room(roomID),
+	checkInDate date,
+	checkOutDate date
 )
+
+SELECT * FROM HotelTransaction
 
 DELETE FROM HotelTransaction
 
@@ -193,31 +211,26 @@ CREATE TABLE Room(
 	[status] varchar(255)
 )
 
+SELECT * FROM Room
+
+UPDATE Room
+SET status = 'Available'
+
 INSERT INTO Room
-VALUES(2, 1000, 'Available')
-
-CREATE TABLE DetailHotelTransaction(
-	transactionID int FOREIGN KEY REFERENCES HotelTransaction(transactionID),
-	roomID int FOREIGN KEY REFERENCES Room(roomID),
-	duration int
-	PRIMARY KEY (transactionID , roomID)
-)
-
-SELECT * FROM DetailHotelTransaction
-
-DELETE FROM DetailHotelTransaction
-
-INSERT INTO DetailHotelTransaction
-VALUES (1, 2, 5)
-
-DROP TABLE DetailHotelTransaction
+VALUES(3, 1000, 'Available')
 
 CREATE TABLE CleaningSchedule(
 	scheduleID int PRIMARY KEY,
 	roomID int FOREIGN KEY REFERENCES Room(roomID),
-	[time] varchar(255),
+	cleaningDate date,
 	[status] varchar(255)
 )
+
+SELECT * FROM CleaningSchedule
+
+DELETE FROM CleaningSchedule
+
+DROP TABLE CleaningSchedule
 
 CREATE TABLE Reservation(
 	reservationID int PRIMARY KEY NOT NULL,
@@ -232,6 +245,8 @@ SELECT * FROM Reservation
 
 INSERT INTO Reservation
 VALUES(1, 1, 1, '01-01-2001', '02-02-2001', 'Active')
+
+DELETE FROM Reservation
 
 CREATE TABLE CleaningLog(
 	cleaningLogID int PRIMARY KEY NOT NULL,
@@ -255,9 +270,13 @@ DELETE FROM Advertisement
 CREATE TABLE TicketTransaction(
 	transactionID int primary key not null,
 	employeeID int foreign key references Employee(employeeID),
-	quantity int,
+	ticketID int foreign key references Ticket(ticketID),
 	purchaseDate date
 )
+
+SELECT * FROM TicketTransaction
+
+DELETE FROM TicketTransaction
 
 DROP TABLE TicketTransaction
 
@@ -266,11 +285,20 @@ CREATE TABLE Ticket(
 	dateCreated date
 )
 
+SELECT * From Ticket
+
+DELETE FROM Ticket
+
+INSERT INTO Ticket
+VALUES(1, '05/13/2020'), (2, '05/14/2020')
+
 CREATE TABLE DetailTicketTransaction(
 	transactionID int foreign key REFERENCES TicketTransaction(transactionID),
 	ticketID int foreign key REFERENCES Ticket(ticketID)
 	PRIMARY KEY(transactionID, ticketID)
 )
+
+SELECT * FROM DetailTicketTransaction
 
 DROP TABLE DetailTicketTransaction
 
@@ -280,12 +308,21 @@ CREATE TABLE Seat(
 	status varchar(255)
 )
 
+INSERT INTO Seat
+VALUES (1, 4, 'Available'), (2, 2, 'Available'),(3, 4, 'Available'), (4, 2, 'Available')
+
+SELECT * FROM Seat
+
 CREATE TABLE RestaurantTransaction(
 	transactionID int primary key not null,
 	employeeID int foreign key references Employee(employeeID),
 	seatID int foreign key references Seat(seatID),
 	purchaseDate date
 )
+
+SELECT * FROM RestaurantTransaction
+
+DELETE FROM RestaurantTransaction
 
 DROP TABLE RestaurantTransaction
 
@@ -295,12 +332,22 @@ CREATE TABLE Food(
 	price int
 )
 
+INSERT INTO Food
+VALUES (1, 'Indomie', 10000), (2, 'Nasi Goreng', 15000), (3, 'Kambing Bakar', 30000), (4, 'Burger', 20000), 
+(5, 'Bakso', 15000)
+
+SELECT * FROM Food
+
 CREATE TABLE DetailRestaurantTransaction(
 	transactionID int foreign key references RestaurantTransaction(transactionID),
 	foodID int foreign key references Food(foodID),
 	quantity int
 	PRIMARY KEY (transactionID, foodID)
 )
+
+SELECT * FROM DetailRestaurantTransaction
+
+DELETE FROM DetailRestaurantTransaction
 
 DROP TABLE DetailRestaurantTransaction
 
@@ -310,12 +357,34 @@ CREATE TABLE [Order](
 	status varchar(255)
 )
 
+SELECT * FROM [Order]
+
+INSERT INTO [Order]
+VALUES (1, 1, 'Waiting'), (2, 2, 'Waiting')
+
+INSERT INTO [Order]
+VALUES (3, 4, 'Finished')
+
+SELECT * FROM [Order]
+
+DELETE FROM [Order]
+WHERE orderID = 3
+
+UPDATE [Order]
+SET [status] = 'Waiting'
+WHERE orderID = 3
+
 CREATE TABLE OrderDetail(
 	orderID int foreign key references [Order](orderID),
 	foodID int foreign key references Food(foodID),
 	quantity int,
 	PRIMARY KEY (orderID, foodID)
 )
+
+SELECT * FROM OrderDetail
+
+INSERT INTO OrderDetail
+VALUES (2, 5, 1)
 
 CREATE TABLE Idea(
 	ideaID int primary key not null,
@@ -354,6 +423,9 @@ CREATE TABLE Ingredient(
 	[name] varchar(255),
 	quantity int
 )
+
+INSERT INTO Ingredient
+VALUES (1, 'Bakmi', 100), (2, 'Roti', 100), (3, 'Daging Kambing', 50)
 
 CREATE TABLE PurchaseLog(
 	purchaseLogID int primary key not null,

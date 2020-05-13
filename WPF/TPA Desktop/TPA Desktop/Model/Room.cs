@@ -19,8 +19,8 @@ namespace TPA_Desktop.Model
         {
             this.CleaningLog = new HashSet<CleaningLog>();
             this.CleaningSchedule = new HashSet<CleaningSchedule>();
-            this.Reservation = new HashSet<Reservation>();
             this.HotelTransaction = new HashSet<HotelTransaction>();
+            this.Reservation = new HashSet<Reservation>();
         }
     
         public int roomID { get; set; }
@@ -32,8 +32,8 @@ namespace TPA_Desktop.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CleaningSchedule> CleaningSchedule { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reservation> Reservation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HotelTransaction> HotelTransaction { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reservation> Reservation { get; set; }
     }
 }

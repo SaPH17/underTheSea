@@ -16,8 +16,8 @@ namespace TPA_Desktop.Model
     {
         public int scheduleID { get; set; }
         public Nullable<int> roomID { get; set; }
-        public string status { get; set; }
         public Nullable<System.DateTime> cleaningDate { get; set; }
+        public string status { get; set; }
     
         public virtual Room Room { get; set; }
     }

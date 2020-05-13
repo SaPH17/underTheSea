@@ -27,5 +27,17 @@ namespace TPA_Desktop.Mediator
             HRRequestRepository repository = new HRRequestRepository();
             return repository.getAllHRRequest();
         }
+
+        public HRRequest getHRRequest(int requestID)
+        {
+            HRRequestRepository repository = new HRRequestRepository();
+            return repository.getHRRequest(requestID);
+        }
+
+        public HRRequest updateHRRequest(int requestID, HRRequest request)
+        {
+            HRRequestRepository repository = new HRRequestRepository();
+            return repository.updateHRRequest(requestID, request);
+        }
     }
 }

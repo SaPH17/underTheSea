@@ -40,5 +40,10 @@ namespace TPA_Desktop.Views.Manager
         {
             new IdeaView().Show();
         }
+
+        private void viewHRRequestBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new HRRequestView().Show();
+        }
     }
 }

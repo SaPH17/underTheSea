@@ -49,7 +49,7 @@ namespace TPA_Desktop.Views.DiningRoomD
 
         private void checkTicketBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            new CheckTicketView().Show();
         }
 
         private void checkoutOrderBtn_Click(object sender, RoutedEventArgs e)

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="UnderTheSeaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="UnderTheSeaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertisement">
           <Key>
             <PropertyRef Name="advertisementID" />
@@ -78,14 +78,6 @@
           <Property Name="transactionID" Type="int" Nullable="false" />
           <Property Name="foodID" Type="int" Nullable="false" />
           <Property Name="quantity" Type="int" />
-        </EntityType>
-        <EntityType Name="DetailTicketTransaction">
-          <Key>
-            <PropertyRef Name="transactionID" />
-            <PropertyRef Name="ticketID" />
-          </Key>
-          <Property Name="transactionID" Type="int" Nullable="false" />
-          <Property Name="ticketID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -289,7 +281,7 @@
           </Key>
           <Property Name="transactionID" Type="int" Nullable="false" />
           <Property Name="employeeID" Type="int" />
-          <Property Name="quantity" Type="int" />
+          <Property Name="ticketID" Type="int" />
           <Property Name="purchaseDate" Type="date" />
         </EntityType>
         <Association Name="FK__CleaningL__roomI__47A6A41B">
@@ -348,30 +340,6 @@
               <PropertyRef Name="transactionID" />
             </Principal>
             <Dependent Role="DetailRestaurantTransaction">
-              <PropertyRef Name="transactionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DetailTic__ticke__18EBB532">
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="1" />
-          <End Role="DetailTicketTransaction" Type="Self.DetailTicketTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Ticket">
-              <PropertyRef Name="ticketID" />
-            </Principal>
-            <Dependent Role="DetailTicketTransaction">
-              <PropertyRef Name="ticketID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DetailTic__trans__17F790F9">
-          <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="1" />
-          <End Role="DetailTicketTransaction" Type="Self.DetailTicketTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TicketTransaction">
-              <PropertyRef Name="transactionID" />
-            </Principal>
-            <Dependent Role="DetailTicketTransaction">
               <PropertyRef Name="transactionID" />
             </Dependent>
           </ReferentialConstraint>
@@ -620,7 +588,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TicketTra__emplo__151B244E">
+        <Association Name="FK__TicketTra__emplo__6EC0713C">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -629,6 +597,18 @@
             </Principal>
             <Dependent Role="TicketTransaction">
               <PropertyRef Name="employeeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TicketTra__ticke__6FB49575">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="0..1" />
+          <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ticketID" />
+            </Principal>
+            <Dependent Role="TicketTransaction">
+              <PropertyRef Name="ticketID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -641,7 +621,6 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetailRestaurantTransaction" EntityType="Self.DetailRestaurantTransaction" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DetailTicketTransaction" EntityType="Self.DetailTicketTransaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
@@ -682,14 +661,6 @@
           <AssociationSet Name="FK__DetailRes__trans__1F98B2C1" Association="Self.FK__DetailRes__trans__1F98B2C1">
             <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
             <End Role="DetailRestaurantTransaction" EntitySet="DetailRestaurantTransaction" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DetailTic__ticke__18EBB532" Association="Self.FK__DetailTic__ticke__18EBB532">
-            <End Role="Ticket" EntitySet="Ticket" />
-            <End Role="DetailTicketTransaction" EntitySet="DetailTicketTransaction" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DetailTic__trans__17F790F9" Association="Self.FK__DetailTic__trans__17F790F9">
-            <End Role="TicketTransaction" EntitySet="TicketTransaction" />
-            <End Role="DetailTicketTransaction" EntitySet="DetailTicketTransaction" />
           </AssociationSet>
           <AssociationSet Name="FK__Employee__depart__06CD04F7" Association="Self.FK__Employee__depart__06CD04F7">
             <End Role="Department" EntitySet="Department" />
@@ -771,12 +742,17 @@
             <End Role="Idea" EntitySet="Idea" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__TicketTra__emplo__151B244E" Association="Self.FK__TicketTra__emplo__151B244E">
+          <AssociationSet Name="FK__TicketTra__emplo__6EC0713C" Association="Self.FK__TicketTra__emplo__6EC0713C">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="TicketTransaction" EntitySet="TicketTransaction" />
           </AssociationSet>
+          <AssociationSet Name="FK__TicketTra__ticke__6FB49575" Association="Self.FK__TicketTra__ticke__6FB49575">
+            <End Role="Ticket" EntitySet="Ticket" />
+            <End Role="TicketTransaction" EntitySet="TicketTransaction" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UnderTheSeaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -816,9 +792,9 @@
           </Key>
           <Property Name="scheduleID" Type="Int32" Nullable="false" />
           <Property Name="roomID" Type="Int32" />
-          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Room" Relationship="Self.FK__CleaningS__roomI__571DF1D5" FromRole="CleaningSchedule" ToRole="Room" />
           <Property Name="cleaningDate" Type="DateTime" Precision="0" />
+          <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__CleaningS__roomI__5E8A0973" FromRole="CleaningSchedule" ToRole="Room" />
         </EntityType>
         <EntityType Name="ConstructionProgress">
           <Key>
@@ -843,7 +819,7 @@
           <Property Name="gender" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Feedback" Relationship="Self.FK__Feedback__custom__4AB81AF0" FromRole="Customer" ToRole="Feedback" />
-          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__HotelTran__custo__0D7A0286" FromRole="Customer" ToRole="HotelTransaction" />
+          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__HotelTran__custo__6166761E" FromRole="Customer" ToRole="HotelTransaction" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK__Reservati__custo__59FA5E80" FromRole="Customer" ToRole="Reservation" />
         </EntityType>
         <EntityType Name="Department">
@@ -879,12 +855,12 @@
           <Property Name="dateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Department" Relationship="Self.FK__Employee__depart__06CD04F7" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__HotelTran__emplo__0E6E26BF" FromRole="Employee" ToRole="HotelTransaction" />
+          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__HotelTran__emplo__625A9A57" FromRole="Employee" ToRole="HotelTransaction" />
           <NavigationProperty Name="HRRequest" Relationship="Self.FK__HRRequest__emplo__37703C52" FromRole="Employee" ToRole="HRRequest" />
           <NavigationProperty Name="MaintenanceLog" Relationship="Self.FK__Maintenan__emplo__0A9D95DB" FromRole="Employee" ToRole="MaintenanceLog" />
           <NavigationProperty Name="PersonalRequest" Relationship="Self.FK__PersonalR__emplo__3B40CD36" FromRole="Employee" ToRole="PersonalRequest" />
           <NavigationProperty Name="RestaurantTransaction" Relationship="Self.FK__Restauran__emplo__1BC821DD" FromRole="Employee" ToRole="RestaurantTransaction" />
-          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__emplo__151B244E" FromRole="Employee" ToRole="TicketTransaction" />
+          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__emplo__6EC0713C" FromRole="Employee" ToRole="TicketTransaction" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -914,12 +890,12 @@
           <Property Name="transactionID" Type="Int32" Nullable="false" />
           <Property Name="customerID" Type="Int32" />
           <Property Name="employeeID" Type="Int32" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK__HotelTran__custo__0D7A0286" FromRole="HotelTransaction" ToRole="Customer" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__HotelTran__emplo__0E6E26BF" FromRole="HotelTransaction" ToRole="Employee" />
           <Property Name="roomID" Type="Int32" />
           <Property Name="checkInDate" Type="DateTime" Precision="0" />
           <Property Name="checkOutDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Room" Relationship="UnderTheSeaModel.FK__HotelTran__roomI__634EBE90" FromRole="HotelTransaction" ToRole="Room" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__HotelTran__custo__6166761E" FromRole="HotelTransaction" ToRole="Customer" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__HotelTran__emplo__625A9A57" FromRole="HotelTransaction" ToRole="Employee" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__HotelTran__roomI__634EBE90" FromRole="HotelTransaction" ToRole="Room" />
         </EntityType>
         <EntityType Name="HRRequest">
           <Key>
@@ -945,7 +921,7 @@
           <Property Name="type" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="category" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Task" Relationship="Self.FK__Task__ideaID__58D1301D" FromRole="Idea" ToRole="Task" />
+          <NavigationProperty Name="Task" Relationship="Self.FK__Task__ideaID__5BAD9CC8" FromRole="Idea" ToRole="Task" />
         </EntityType>
         <EntityType Name="Ingredient">
           <Key>
@@ -1070,9 +1046,9 @@
           <Property Name="price" Type="Int32" />
           <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CleaningLog" Relationship="Self.FK__CleaningL__roomI__47A6A41B" FromRole="Room" ToRole="CleaningLog" />
-          <NavigationProperty Name="CleaningSchedule" Relationship="Self.FK__CleaningS__roomI__571DF1D5" FromRole="Room" ToRole="CleaningSchedule" />
+          <NavigationProperty Name="CleaningSchedule" Relationship="Self.FK__CleaningS__roomI__5E8A0973" FromRole="Room" ToRole="CleaningSchedule" />
+          <NavigationProperty Name="HotelTransaction" Relationship="Self.FK__HotelTran__roomI__634EBE90" FromRole="Room" ToRole="HotelTransaction" />
           <NavigationProperty Name="Reservation" Relationship="Self.FK__Reservati__roomI__5AEE82B9" FromRole="Room" ToRole="Reservation" />
-          <NavigationProperty Name="HotelTransaction" Relationship="UnderTheSeaModel.FK__HotelTran__roomI__634EBE90" FromRole="Room" ToRole="HotelTransaction" />
         </EntityType>
         <EntityType Name="Seat">
           <Key>
@@ -1091,8 +1067,8 @@
           <Property Name="taskID" Type="Int32" Nullable="false" />
           <Property Name="ideaID" Type="Int32" />
           <Property Name="status" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Idea" Relationship="Self.FK__Task__ideaID__58D1301D" FromRole="Task" ToRole="Idea" />
           <Property Name="taskDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Idea" Relationship="Self.FK__Task__ideaID__5BAD9CC8" FromRole="Task" ToRole="Idea" />
         </EntityType>
         <EntityType Name="Ticket">
           <Key>
@@ -1100,7 +1076,7 @@
           </Key>
           <Property Name="ticketID" Type="Int32" Nullable="false" />
           <Property Name="dateCreated" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="TicketTransaction" Relationship="Self.DetailTicketTransaction" FromRole="Ticket" ToRole="TicketTransaction" />
+          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__ticke__6FB49575" FromRole="Ticket" ToRole="TicketTransaction" />
         </EntityType>
         <EntityType Name="TicketTransaction">
           <Key>
@@ -1108,10 +1084,10 @@
           </Key>
           <Property Name="transactionID" Type="Int32" Nullable="false" />
           <Property Name="employeeID" Type="Int32" />
-          <Property Name="quantity" Type="Int32" />
+          <Property Name="ticketID" Type="Int32" />
           <Property Name="purchaseDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__TicketTra__emplo__151B244E" FromRole="TicketTransaction" ToRole="Employee" />
-          <NavigationProperty Name="Ticket" Relationship="Self.DetailTicketTransaction" FromRole="TicketTransaction" ToRole="Ticket" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__TicketTra__emplo__6EC0713C" FromRole="TicketTransaction" ToRole="Employee" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK__TicketTra__ticke__6FB49575" FromRole="TicketTransaction" ToRole="Ticket" />
         </EntityType>
         <Association Name="FK__Construct__attra__4A8310C6">
           <End Role="AttractionOrRide" Type="Self.AttractionOrRide" Multiplicity="0..1" />
@@ -1149,7 +1125,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CleaningS__roomI__571DF1D5">
+        <Association Name="FK__CleaningS__roomI__5E8A0973">
           <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
           <End Role="CleaningSchedule" Type="Self.CleaningSchedule" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1173,7 +1149,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HotelTran__custo__0D7A0286">
+        <Association Name="FK__HotelTran__custo__6166761E">
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
           <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1261,7 +1237,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HotelTran__emplo__0E6E26BF">
+        <Association Name="FK__HotelTran__emplo__625A9A57">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1321,7 +1297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TicketTra__emplo__151B244E">
+        <Association Name="FK__TicketTra__emplo__6EC0713C">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1345,7 +1321,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Task__ideaID__58D1301D">
+        <Association Name="FK__HotelTran__roomI__634EBE90">
+          <End Role="Room" Type="Self.Room" Multiplicity="0..1" />
+          <End Role="HotelTransaction" Type="Self.HotelTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="roomID" />
+            </Principal>
+            <Dependent Role="HotelTransaction">
+              <PropertyRef Name="roomID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Task__ideaID__5BAD9CC8">
           <End Role="Idea" Type="Self.Idea" Multiplicity="0..1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1417,9 +1405,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="DetailTicketTransaction">
-          <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
+        <Association Name="FK__TicketTra__ticke__6FB49575">
+          <End Role="Ticket" Type="Self.Ticket" Multiplicity="0..1" />
           <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ticket">
+              <PropertyRef Name="ticketID" />
+            </Principal>
+            <Dependent Role="TicketTransaction">
+              <PropertyRef Name="ticketID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UnderTheSeaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Advertisement" EntityType="Self.Advertisement" />
@@ -1463,7 +1459,7 @@
             <End Role="Room" EntitySet="Room" />
             <End Role="CleaningLog" EntitySet="CleaningLog" />
           </AssociationSet>
-          <AssociationSet Name="FK__CleaningS__roomI__571DF1D5" Association="Self.FK__CleaningS__roomI__571DF1D5">
+          <AssociationSet Name="FK__CleaningS__roomI__5E8A0973" Association="Self.FK__CleaningS__roomI__5E8A0973">
             <End Role="Room" EntitySet="Room" />
             <End Role="CleaningSchedule" EntitySet="CleaningSchedule" />
           </AssociationSet>
@@ -1471,7 +1467,7 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Feedback" EntitySet="Feedback" />
           </AssociationSet>
-          <AssociationSet Name="FK__HotelTran__custo__0D7A0286" Association="Self.FK__HotelTran__custo__0D7A0286">
+          <AssociationSet Name="FK__HotelTran__custo__6166761E" Association="Self.FK__HotelTran__custo__6166761E">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="HotelTransaction" EntitySet="HotelTransaction" />
           </AssociationSet>
@@ -1499,7 +1495,7 @@
             <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
             <End Role="DetailRestaurantTransaction" EntitySet="DetailRestaurantTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__HotelTran__emplo__0E6E26BF" Association="Self.FK__HotelTran__emplo__0E6E26BF">
+          <AssociationSet Name="FK__HotelTran__emplo__625A9A57" Association="Self.FK__HotelTran__emplo__625A9A57">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="HotelTransaction" EntitySet="HotelTransaction" />
           </AssociationSet>
@@ -1519,7 +1515,7 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__TicketTra__emplo__151B244E" Association="Self.FK__TicketTra__emplo__151B244E">
+          <AssociationSet Name="FK__TicketTra__emplo__6EC0713C" Association="Self.FK__TicketTra__emplo__6EC0713C">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="TicketTransaction" EntitySet="TicketTransaction" />
           </AssociationSet>
@@ -1527,7 +1523,11 @@
             <End Role="Food" EntitySet="Food" />
             <End Role="OrderDetail" EntitySet="OrderDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK__Task__ideaID__58D1301D" Association="Self.FK__Task__ideaID__58D1301D">
+          <AssociationSet Name="FK__HotelTran__roomI__634EBE90" Association="Self.FK__HotelTran__roomI__634EBE90">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Task__ideaID__5BAD9CC8" Association="Self.FK__Task__ideaID__5BAD9CC8">
             <End Role="Idea" EntitySet="Idea" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
@@ -1551,27 +1551,11 @@
             <End Role="Seat" EntitySet="Seat" />
             <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
           </AssociationSet>
-          <AssociationSet Name="DetailTicketTransaction" Association="Self.DetailTicketTransaction">
+          <AssociationSet Name="FK__TicketTra__ticke__6FB49575" Association="Self.FK__TicketTra__ticke__6FB49575">
             <End Role="Ticket" EntitySet="Ticket" />
             <End Role="TicketTransaction" EntitySet="TicketTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__HotelTran__roomI__634EBE90" Association="UnderTheSeaModel.FK__HotelTran__roomI__634EBE90">
-            <End Role="Room" EntitySet="Room" />
-            <End Role="HotelTransaction" EntitySet="HotelTransaction" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK__HotelTran__roomI__634EBE90">
-          <End Type="UnderTheSeaModel.Room" Role="Room" Multiplicity="0..1" />
-          <End Type="UnderTheSeaModel.HotelTransaction" Role="HotelTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Room">
-              <PropertyRef Name="roomID" />
-            </Principal>
-            <Dependent Role="HotelTransaction">
-              <PropertyRef Name="roomID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1611,9 +1595,9 @@
           <EntitySetMapping Name="CleaningSchedule">
             <EntityTypeMapping TypeName="UnderTheSeaModel.CleaningSchedule">
               <MappingFragment StoreEntitySet="CleaningSchedule">
-                <ScalarProperty Name="cleaningDate" ColumnName="cleaningDate" />
                 <ScalarProperty Name="scheduleID" ColumnName="scheduleID" />
                 <ScalarProperty Name="roomID" ColumnName="roomID" />
+                <ScalarProperty Name="cleaningDate" ColumnName="cleaningDate" />
                 <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1695,12 +1679,12 @@
           <EntitySetMapping Name="HotelTransaction">
             <EntityTypeMapping TypeName="UnderTheSeaModel.HotelTransaction">
               <MappingFragment StoreEntitySet="HotelTransaction">
-                <ScalarProperty Name="checkOutDate" ColumnName="checkOutDate" />
-                <ScalarProperty Name="checkInDate" ColumnName="checkInDate" />
-                <ScalarProperty Name="roomID" ColumnName="roomID" />
                 <ScalarProperty Name="transactionID" ColumnName="transactionID" />
                 <ScalarProperty Name="customerID" ColumnName="customerID" />
                 <ScalarProperty Name="employeeID" ColumnName="employeeID" />
+                <ScalarProperty Name="roomID" ColumnName="roomID" />
+                <ScalarProperty Name="checkInDate" ColumnName="checkInDate" />
+                <ScalarProperty Name="checkOutDate" ColumnName="checkOutDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1859,10 +1843,10 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="UnderTheSeaModel.Task">
               <MappingFragment StoreEntitySet="Task">
-                <ScalarProperty Name="taskDescription" ColumnName="taskDescription" />
                 <ScalarProperty Name="taskID" ColumnName="taskID" />
                 <ScalarProperty Name="ideaID" ColumnName="ideaID" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="taskDescription" ColumnName="taskDescription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1879,19 +1863,11 @@
               <MappingFragment StoreEntitySet="TicketTransaction">
                 <ScalarProperty Name="transactionID" ColumnName="transactionID" />
                 <ScalarProperty Name="employeeID" ColumnName="employeeID" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="ticketID" ColumnName="ticketID" />
                 <ScalarProperty Name="purchaseDate" ColumnName="purchaseDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="DetailTicketTransaction" TypeName="UnderTheSeaModel.DetailTicketTransaction" StoreEntitySet="DetailTicketTransaction">
-            <EndProperty Name="Ticket">
-              <ScalarProperty Name="ticketID" ColumnName="ticketID" />
-            </EndProperty>
-            <EndProperty Name="TicketTransaction">
-              <ScalarProperty Name="transactionID" ColumnName="transactionID" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

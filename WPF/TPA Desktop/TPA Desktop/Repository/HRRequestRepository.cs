@@ -33,8 +33,26 @@ namespace TPA_Desktop.Repository
         public dynamic getAllHRRequest()
         {
             Connection con = Connection.getConnection();
+            if(Session.getSession().employee.departmentID == 13)
+            {
+                var result = from r in con.db.HRRequest
+                         join e in con.db.Employee on r.employeeID equals e.employeeID
+                         where r.status == "Pending"
+                         select new
+                         {
+                             r.requestID,
+                             e.name,
+                             r.title,
+                             r.description,
+                             r.type,
+                             r.status
+                         };
+                return result.ToList();
 
-            var result = from r in con.db.HRRequest
+            }
+            else
+            {
+                var result = from r in con.db.HRRequest
                          join e in con.db.Employee on r.employeeID equals e.employeeID
                          select new
                          {
@@ -45,7 +63,27 @@ namespace TPA_Desktop.Repository
                              r.type,
                              r.status
                          };
-            return result.ToList();
+
+                return result.ToList();
+
+            }
+
+        }
+
+        public HRRequest getHRRequest(int requestID)
+        {
+            Connection con = Connection.getConnection();
+            return con.db.HRRequest.Find(requestID);
+        }
+
+        public HRRequest updateHRRequest(int requestID, HRRequest request)
+        {
+            Connection con = Connection.getConnection();
+            HRRequest newRequest = con.db.HRRequest.Find(requestID);
+            newRequest = request;
+            con.db.SaveChanges();
+
+            return newRequest;
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TPA_Desktop.Views"
         mc:Ignorable="d"
-        Title="Manager" Height="300" Width="525"
+        Title="Manager" Height="500" Width="525"
         WindowStartupLocation="CenterScreen"
         Background="LightBlue">
     <Border Padding="10">
@@ -15,6 +15,7 @@
             <Button x:Name="viewIdeaRequestBtn" Margin="5" Click="viewIdeaRequestBtn_Click">View Idea Request</Button>
             <Button x:Name="viewIncomeBtn" Margin="5" Click="viewIncomeBtn_Click">View Income</Button>
             <Button x:Name="viewResignRequestBtn" Margin="5" Click="viewResignRequestBtn_Click">View Employee Resign Request</Button>
+            <Button x:Name="viewHRRequestBtn" Margin="5" Click="viewHRRequestBtn_Click">View Human Resource Request</Button>
         </StackPanel>
     </Border>
 </Window>

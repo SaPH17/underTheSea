@@ -35,8 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -50,8 +49,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +65,10 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Zen.Barcode.Core, Version=3.1.0.0, Culture=neutral, PublicKeyToken=b5ae55aa76d2d9de, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zen.Barcode.Rendering.Framework.3.1.10729.1\lib\Zen.Barcode.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -90,6 +95,8 @@
     <Compile Include="Factory\ReservationFactory.cs" />
     <Compile Include="Factory\RestaurantTransactionFactory.cs" />
     <Compile Include="Factory\TaskFactory.cs" />
+    <Compile Include="Factory\TicketFactory.cs" />
+    <Compile Include="Factory\TicketTransactionFactory.cs" />
     <Compile Include="Mediator\AdvertisementMediator.cs" />
     <Compile Include="Mediator\AttractionRideMediator.cs" />
     <Compile Include="Mediator\CleaningLogMediator.cs" />
@@ -114,6 +121,8 @@
     <Compile Include="Mediator\RoomMediator.cs" />
     <Compile Include="Mediator\SeatMediator.cs" />
     <Compile Include="Mediator\TaskMediator.cs" />
+    <Compile Include="Mediator\TicketMediator.cs" />
+    <Compile Include="Mediator\TicketTransactionMediator.cs" />
     <Compile Include="Model\Advertisement.cs">
       <DependentUpon>UnderTheSea.tt</DependentUpon>
     </Compile>
@@ -216,6 +225,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UnderTheSea.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GeneratedQRCode.cs" />
     <Compile Include="Repository\AdvertisementRepository.cs" />
     <Compile Include="Repository\AttractionRideRepository.cs" />
     <Compile Include="Repository\CleaningLogRepository.cs" />
@@ -240,6 +250,8 @@
     <Compile Include="Repository\RoomRepository.cs" />
     <Compile Include="Repository\SeatRepository.cs" />
     <Compile Include="Repository\TaskRepository.cs" />
+    <Compile Include="Repository\TicketRepository.cs" />
+    <Compile Include="Repository\TicketTransactionRepository.cs" />
     <Compile Include="Views\AccountingFD\AccountingFDView.xaml.cs">
       <DependentUpon>AccountingFDView.xaml</DependentUpon>
     </Compile>
@@ -261,6 +273,15 @@
     <Compile Include="Views\All\RequestResponseView.xaml.cs">
       <DependentUpon>RequestResponseView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AttractionD\QRCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\AttractionD\QRCode.Designer.cs">
+      <DependentUpon>QRCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AttractionD\SellTicketView.xaml.cs">
+      <DependentUpon>SellTicketView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ConstructionD\AddConstructionProgressView.xaml.cs">
       <DependentUpon>AddConstructionProgressView.xaml</DependentUpon>
     </Compile>
@@ -281,6 +302,9 @@
     </Compile>
     <Compile Include="Views\DiningRoomD\CheckoutOrderView.xaml.cs">
       <DependentUpon>CheckoutOrderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DiningRoomD\CheckTicketView.xaml.cs">
+      <DependentUpon>CheckTicketView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\DiningRoomD\DiningRDView.xaml.cs">
       <DependentUpon>DiningRDView.xaml</DependentUpon>
@@ -363,6 +387,9 @@
     <Compile Include="Views\MaintenanceD\MaintenanceScheduleView.xaml.cs">
       <DependentUpon>MaintenanceScheduleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Manager\HRRequestView.xaml.cs">
+      <DependentUpon>HRRequestView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Manager\IdeaView.xaml.cs">
       <DependentUpon>IdeaView.xaml</DependentUpon>
     </Compile>
@@ -439,11 +466,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AttractionDView.xaml">
+    <Page Include="Views\AttractionD\AttractionDView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\All\BiodataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AttractionD\SellTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -472,6 +503,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\DiningRoomD\CheckoutOrderView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DiningRoomD\CheckTicketView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -574,7 +609,7 @@
     <Compile Include="Connection.cs" />
     <Compile Include="Mediator\EmployeeMediator.cs" />
     <Compile Include="Repository\EmployeeRepository.cs" />
-    <Compile Include="Views\AttractionDView.xaml.cs">
+    <Compile Include="Views\AttractionD\AttractionDView.xaml.cs">
       <DependentUpon>AttractionDView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\All\BiodataView.xaml.cs">
@@ -608,6 +643,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MaintenanceD\MaintenanceScheduleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Manager\HRRequestView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -695,6 +734,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\AttractionD\QRCode.resx">
+      <DependentUpon>QRCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Model\UnderTheSea.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UnderTheSea.Designer.cs</LastGenOutput>
@@ -716,10 +758,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="shark.ico" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
+    <Resource Include="favicon.ico" />
     <Content Include="Model\UnderTheSea.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UnderTheSea.edmx</DependentUpon>
