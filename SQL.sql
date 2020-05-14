@@ -271,7 +271,7 @@ CREATE TABLE TicketTransaction(
 	transactionID int primary key not null,
 	employeeID int foreign key references Employee(employeeID),
 	ticketID int foreign key references Ticket(ticketID),
-	purchaseDate date
+	purchaseDate date,
 )
 
 SELECT * FROM TicketTransaction
@@ -294,7 +294,8 @@ VALUES(1, '05/13/2020'), (2, '05/14/2020')
 
 CREATE TABLE DetailTicketTransaction(
 	transactionID int foreign key REFERENCES TicketTransaction(transactionID),
-	ticketID int foreign key REFERENCES Ticket(ticketID)
+	ticketID int foreign key REFERENCES Ticket(ticketID),
+	status varchar(255)
 	PRIMARY KEY(transactionID, ticketID)
 )
 
@@ -369,6 +370,9 @@ SELECT * FROM [Order]
 
 DELETE FROM [Order]
 WHERE orderID = 3
+
+DELETE FROM [Order]
+DELETE FROM OrderDetail
 
 UPDATE [Order]
 SET [status] = 'Waiting'

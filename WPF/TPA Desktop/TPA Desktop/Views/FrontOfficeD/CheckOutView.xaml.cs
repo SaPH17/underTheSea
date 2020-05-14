@@ -42,6 +42,10 @@ namespace TPA_Desktop.Views.FrontOfficeD
             {
                 errorLbl.Text = "Reservation ID, Damage Cost, Payment must be a number!";
             }
+            else if(DateTime.Now.Hour >= 8)
+            {
+                errorLbl.Text = "Check out time is 8 AM";
+            }
             else
             {
                 int change = totalPrice - payment;
