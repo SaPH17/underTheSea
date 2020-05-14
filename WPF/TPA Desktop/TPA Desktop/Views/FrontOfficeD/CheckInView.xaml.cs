@@ -58,12 +58,12 @@ namespace TPA_Desktop.Views.FrontOfficeD
             DateTime? checkOutDate = checkOutDatepicker.SelectedDate;
 
             bool success = int.TryParse(roomIDStr, out roomID);
-
+            MessageBox.Show(DateTime.Now.Hour.ToString());
             if (!success)
             {
                 errorLbl.Text = "Room ID must be a number";
             }
-            else if(DateTime.Now.Hour >= 10)
+            else if(DateTime.Now.Hour <= 10)
             {
                 errorLbl.Text = "Check in time is 10 AM";
             }

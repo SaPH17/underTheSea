@@ -33,7 +33,7 @@ namespace TPA_Desktop.Views.Manager
 
         private void viewIncomeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            new TransactionView().Show();
         }
 
         private void viewIdeaRequestBtn_Click(object sender, RoutedEventArgs e)

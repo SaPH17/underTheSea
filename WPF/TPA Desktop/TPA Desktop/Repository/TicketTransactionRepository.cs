@@ -21,6 +21,7 @@ namespace TPA_Desktop.Repository
         public List<TicketTransaction> getAllTicketTransaction()
         {
             Connection con = Connection.getConnection();
+
             return con.db.TicketTransaction.ToList();
         }
 

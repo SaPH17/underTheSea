@@ -9,10 +9,14 @@ namespace TPA_Desktop.Repository
 {
     class ReservationRepository
     {
-        public List<Reservation> getAllReservation()
+        public dynamic getAllReservation()
         {
             Connection con = Connection.getConnection();
-            return con.db.Reservation.ToList();
+            var result = (from r in con.db.Reservation
+                          where r.status != "Finished"
+                          select r).ToList();
+
+            return result;
         }
 
         public Reservation addReservation(Reservation reservation)

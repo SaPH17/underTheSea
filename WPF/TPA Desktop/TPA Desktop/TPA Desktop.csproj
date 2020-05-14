@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>favicon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -398,6 +399,9 @@
     <Compile Include="Views\Manager\PersonalRequestView.xaml.cs">
       <DependentUpon>PersonalRequestView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Manager\TransactionView.xaml.cs">
+      <DependentUpon>TransactionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PurchasingD\AddPurchaseLogView.xaml.cs">
       <DependentUpon>AddPurchaseLogView.xaml</DependentUpon>
     </Compile>
@@ -661,6 +665,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Manager\TransactionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PurchasingD\AddPurchaseLogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -755,9 +763,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\UnderTheSea.Context.tt">

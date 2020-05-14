@@ -22,10 +22,16 @@ namespace TPA_Desktop.Mediator
             return repository.addHotelTransaction(transaction);
         }
 
-        public List<HotelTransaction> getAllHotelTransaction()
+        public dynamic getAllHotelTransaction()
         {
             HotelTransactionRepository repository = new HotelTransactionRepository();
             return repository.getAllHotelTransaction();
+        }
+
+        public int getHotelIncome()
+        {
+            HotelTransactionRepository repository = new HotelTransactionRepository();
+            return repository.getHotelIncome();
         }
     }
 }

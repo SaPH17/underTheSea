@@ -10,7 +10,7 @@ namespace TPA_Desktop.Mediator
 {
     class ReservationMediator
     {
-        public List<Reservation> getAllReservation()
+        public dynamic getAllReservation()
         {
             ReservationRepository repository = new ReservationRepository();
             return repository.getAllReservation();

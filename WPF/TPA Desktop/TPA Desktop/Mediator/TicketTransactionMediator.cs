@@ -21,5 +21,11 @@ namespace TPA_Desktop.Mediator
             TicketTransactionRepository repository = new TicketTransactionRepository();
             return repository.getLastID();
         }
+
+        public List<TicketTransaction> getAllTicketTransaction()
+        {
+            TicketTransactionRepository repository = new TicketTransactionRepository();
+            return repository.getAllTicketTransaction();
+        }
     }
 }

@@ -31,10 +31,38 @@ namespace TPA_Desktop.Repository
 
         }
 
-        public List<HotelTransaction> getAllHotelTransaction()
+        public dynamic getAllHotelTransaction()
         {
             Connection con = Connection.getConnection();
-            return con.db.HotelTransaction.ToList();
+            var result = (from t in con.db.HotelTransaction
+                          join r in con.db.Room on t.roomID equals r.roomID
+                          select new
+                          {
+                              t.transactionID,
+                              t.employeeID,
+                              t.customerID,
+                              r.roomID,
+                              r.price,
+                              t.checkInDate,
+                              t.checkOutDate
+                          });
+
+
+            return result.ToList();
+        }
+
+        public int getHotelIncome()
+        {
+            Connection con = Connection.getConnection();
+            int temp = 0;
+            List<HotelTransaction> hotelTransactions = con.db.HotelTransaction.ToList();
+
+            foreach(HotelTransaction t in hotelTransactions)
+            {
+                temp += (int) con.db.Room.Find(t.roomID).price;
+            }
+
+            return temp;
         }
     }
 }

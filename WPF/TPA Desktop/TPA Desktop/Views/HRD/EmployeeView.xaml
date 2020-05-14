@@ -11,7 +11,7 @@
         Loaded="Window_Loaded">
     <Border Padding="10">
         <StackPanel>
-            <DataGrid x:Name="employeeView"></DataGrid>
+            <DataGrid MaxHeight="200" VerticalScrollBarVisibility="Visible" x:Name="employeeView"></DataGrid>
         </StackPanel>
     </Border>
 </Window>

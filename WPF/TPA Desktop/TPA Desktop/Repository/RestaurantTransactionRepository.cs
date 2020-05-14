@@ -56,5 +56,35 @@ namespace TPA_Desktop.Repository
             Connection con = Connection.getConnection();
             return con.db.RestaurantTransaction.ToList();
         }
+
+        public dynamic getAllDetailRestaurantTransaction(int transactionID)
+        {
+            Connection con = Connection.getConnection();
+
+            var result = (from t in con.db.DetailRestaurantTransaction
+                          join f in con.db.Food on t.foodID equals f.foodID
+                          where t.transactionID == transactionID select new
+                          {
+                              t.transactionID,
+                              f.name,
+                              f.price,
+                              t.quantity
+                          });
+            return result.ToList();
+        }
+
+        public int getRestaurantIncome()
+        {
+            Connection con = Connection.getConnection();
+            int temp = 0;
+            List<DetailRestaurantTransaction> transactions = con.db.DetailRestaurantTransaction.ToList();
+
+            foreach (DetailRestaurantTransaction t in transactions)
+            {
+                temp += (int)(con.db.Food.Find(t.foodID).price * t.quantity);
+            }
+
+            return temp;
+        }
     }
 }
