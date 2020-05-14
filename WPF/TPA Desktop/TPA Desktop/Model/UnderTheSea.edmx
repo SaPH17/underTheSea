@@ -588,7 +588,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TicketTra__emplo__6EC0713C">
+        <Association Name="FK__TicketTra__emplo__03BB8E22">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -600,7 +600,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TicketTra__ticke__6FB49575">
+        <Association Name="FK__TicketTra__ticke__04AFB25B">
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="0..1" />
           <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -742,11 +742,11 @@
             <End Role="Idea" EntitySet="Idea" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
-          <AssociationSet Name="FK__TicketTra__emplo__6EC0713C" Association="Self.FK__TicketTra__emplo__6EC0713C">
+          <AssociationSet Name="FK__TicketTra__emplo__03BB8E22" Association="Self.FK__TicketTra__emplo__03BB8E22">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="TicketTransaction" EntitySet="TicketTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__TicketTra__ticke__6FB49575" Association="Self.FK__TicketTra__ticke__6FB49575">
+          <AssociationSet Name="FK__TicketTra__ticke__04AFB25B" Association="Self.FK__TicketTra__ticke__04AFB25B">
             <End Role="Ticket" EntitySet="Ticket" />
             <End Role="TicketTransaction" EntitySet="TicketTransaction" />
           </AssociationSet>
@@ -860,7 +860,7 @@
           <NavigationProperty Name="MaintenanceLog" Relationship="Self.FK__Maintenan__emplo__0A9D95DB" FromRole="Employee" ToRole="MaintenanceLog" />
           <NavigationProperty Name="PersonalRequest" Relationship="Self.FK__PersonalR__emplo__3B40CD36" FromRole="Employee" ToRole="PersonalRequest" />
           <NavigationProperty Name="RestaurantTransaction" Relationship="Self.FK__Restauran__emplo__1BC821DD" FromRole="Employee" ToRole="RestaurantTransaction" />
-          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__emplo__6EC0713C" FromRole="Employee" ToRole="TicketTransaction" />
+          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__emplo__03BB8E22" FromRole="Employee" ToRole="TicketTransaction" />
         </EntityType>
         <EntityType Name="Feedback">
           <Key>
@@ -1076,7 +1076,7 @@
           </Key>
           <Property Name="ticketID" Type="Int32" Nullable="false" />
           <Property Name="dateCreated" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__ticke__6FB49575" FromRole="Ticket" ToRole="TicketTransaction" />
+          <NavigationProperty Name="TicketTransaction" Relationship="Self.FK__TicketTra__ticke__04AFB25B" FromRole="Ticket" ToRole="TicketTransaction" />
         </EntityType>
         <EntityType Name="TicketTransaction">
           <Key>
@@ -1086,8 +1086,8 @@
           <Property Name="employeeID" Type="Int32" />
           <Property Name="ticketID" Type="Int32" />
           <Property Name="purchaseDate" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__TicketTra__emplo__6EC0713C" FromRole="TicketTransaction" ToRole="Employee" />
-          <NavigationProperty Name="Ticket" Relationship="Self.FK__TicketTra__ticke__6FB49575" FromRole="TicketTransaction" ToRole="Ticket" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__TicketTra__emplo__03BB8E22" FromRole="TicketTransaction" ToRole="Employee" />
+          <NavigationProperty Name="Ticket" Relationship="Self.FK__TicketTra__ticke__04AFB25B" FromRole="TicketTransaction" ToRole="Ticket" />
         </EntityType>
         <Association Name="FK__Construct__attra__4A8310C6">
           <End Role="AttractionOrRide" Type="Self.AttractionOrRide" Multiplicity="0..1" />
@@ -1297,7 +1297,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TicketTra__emplo__6EC0713C">
+        <Association Name="FK__TicketTra__emplo__03BB8E22">
           <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
           <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1405,7 +1405,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TicketTra__ticke__6FB49575">
+        <Association Name="FK__TicketTra__ticke__04AFB25B">
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="0..1" />
           <End Role="TicketTransaction" Type="Self.TicketTransaction" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1515,7 +1515,7 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__TicketTra__emplo__6EC0713C" Association="Self.FK__TicketTra__emplo__6EC0713C">
+          <AssociationSet Name="FK__TicketTra__emplo__03BB8E22" Association="Self.FK__TicketTra__emplo__03BB8E22">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="TicketTransaction" EntitySet="TicketTransaction" />
           </AssociationSet>
@@ -1551,7 +1551,7 @@
             <End Role="Seat" EntitySet="Seat" />
             <End Role="RestaurantTransaction" EntitySet="RestaurantTransaction" />
           </AssociationSet>
-          <AssociationSet Name="FK__TicketTra__ticke__6FB49575" Association="Self.FK__TicketTra__ticke__6FB49575">
+          <AssociationSet Name="FK__TicketTra__ticke__04AFB25B" Association="Self.FK__TicketTra__ticke__04AFB25B">
             <End Role="Ticket" EntitySet="Ticket" />
             <End Role="TicketTransaction" EntitySet="TicketTransaction" />
           </AssociationSet>

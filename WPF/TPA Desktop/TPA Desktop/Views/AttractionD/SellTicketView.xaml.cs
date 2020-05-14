@@ -75,6 +75,7 @@ namespace TPA_Desktop.Views.AttractionD
                     changeLbl.Text = "Change = \t\tRp. " + Math.Abs(change).ToString();
 
                     ticketList = new List<Ticket>();
+
                     for(int i = 0; i < quantity; i++)
                     {
                         ticketList.Add(mediator.addTicket(factory.generateTicket()));
@@ -92,10 +93,10 @@ namespace TPA_Desktop.Views.AttractionD
                             return;
                         }
                     }
+
                     MessageBox.Show("Buy ticket success!");
                     nextBarcodeBtn.Visibility = Visibility.Visible;
-                    GeneratedQRCode.ticket = ticketList.ElementAt(counter);
-                    qr = new QRCode();
+                    qr = new QRCode(ticketList.ElementAt(counter));
                     qr.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
                     qr.Show();
                 }
@@ -110,9 +111,8 @@ namespace TPA_Desktop.Views.AttractionD
             {
                 counter = 0;
             }
-            GeneratedQRCode.ticket = ticketList.ElementAt(counter);
             qr.Close();
-            qr = new QRCode();
+            qr = new QRCode(ticketList.ElementAt(counter));
             qr.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             qr.Show();
         }

@@ -225,7 +225,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UnderTheSea.edmx</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedQRCode.cs" />
     <Compile Include="Repository\AdvertisementRepository.cs" />
     <Compile Include="Repository\AttractionRideRepository.cs" />
     <Compile Include="Repository\CleaningLogRepository.cs" />
@@ -759,6 +758,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\UnderTheSea.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UnderTheSea.edmx</DependentUpon>

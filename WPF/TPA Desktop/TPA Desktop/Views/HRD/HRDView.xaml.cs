@@ -49,7 +49,7 @@ namespace TPA_Desktop.Views.HRD
 
         private void paySalaryBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("All salary has been paid!");
         }
 
         private void viewLeavePermitBtn_Click(object sender, RoutedEventArgs e)
